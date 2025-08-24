@@ -1,0 +1,22 @@
+header {
+    position: absolute;
+    padding: 0;
+    overflow: hidden;
+    z-index: 2;
+}
+
+main {
+    place-items: center;
+    width: 100%;
+    padding-top: 100px;
+    z-index: 3;
+}
+
+footer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #00364F;
+}

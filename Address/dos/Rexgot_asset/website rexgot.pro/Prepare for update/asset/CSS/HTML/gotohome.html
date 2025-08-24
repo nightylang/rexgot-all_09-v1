@@ -1,0 +1,285 @@
+<html lang="en" class="Light-mode">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" for="icon/x-icon" href="./photo_2024-10-27_11-01-44.jpg">
+    <title>CUS Test Code</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to REX_GOT.Pro Site</h1>
+        <div class="ishome">
+            <span>is Home</span>
+        </div>
+        <div>
+            <a onclick="TopNavBar.toggleUserPreferredTheme()" id="tnb-dark-mode-toggle-btn" href="javascript:void(0);" class="tnb-button fa ga-nav ga-dark-mode-toggle" role="button" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+                <i>D</i>
+            </a>
+        </div>
+    </header>
+    <nav style="width: 100%;">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li class="about"><a href="./checkout.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li class="forlog"><a clas="right" href="./login.html " onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+        </ul>
+
+    </nav>
+    <main>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"> ^ </button>
+        <aside>
+            <h2>Cource Rex Got</h2>
+            <div class="Aside">
+                <ul>
+                    <li class="tablinks" onclick="openCity(event, 'HTML')">HTML 5</li>
+                    <li class="tablinks" onclick="openCity(event, 'CSS')">CSS 3</li>
+                    <li class="tablinks" onclick="openCity(event, 'JavaScript')">JavaScript</li>
+                    <li class="tablinks" onclick="openCity(event, 'Rjs')">React.js</li>
+                    <li class="tablinks" onclick="openCity(event, 'Bs')">Bootstrap</li>
+                    <li class="tablinks" onclick="openCity(event, 'Php')">PHP</li>
+                    <li class="tablinks" onclick="openCity(event, 'Tw')">Tailwind</li>
+                    <li class="tablinks" onclick="openCity(event, 'Java')" id="defaultOpen">Java</li>
+                </ul>
+            </div>
+        </aside>
+        <section>
+            <h1>Hello this is test code</h1>
+            <table style="width: 100%;">
+                <tr>
+                    <th style="text-align: center;">ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>HTML</td>
+                    <td>25</td>
+                    <td rowspan="5 ">Cource</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>CSS</td>
+                    <td>100</td>
+
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>JavaScript</td>
+                    <td>250</td>
+
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>Java</td>
+                    <td>450</td>
+
+                </tr>
+                <tr>
+                    <td>005</td>
+                    <td>React.js</td>
+                    <td>800</td>
+
+                </tr>
+            </table>
+            <div class="Porfile">
+
+                <div class="p-left">
+                    <h4 style="margin-bottom: 15px; margin-top:10px;">Info Cource</h4>
+                    <div id="Java" class="tabcontent">
+                        <h3>Java</h3>
+                        <p style="text-align: left; color:gainsboro;"> <b>   Java </b> is a set of computer software and specifications that provides a software platform for developing application software and deploying it in a cross-platform computing environment. Java is used in a wide variety of
+                            computing platforms from embedded devices and mobile phones to enterprise servers and supercomputers. Java applets, which are less common than standalone Java applications, were commonly run in secure, sandboxed environments
+                            to provide many features of native applications through being embedded in HTML pages.
+                        </p>
+                    </div>
+                    <div id="HTML" class="tabcontent">
+                        <h3>HTML 5</h3>
+                        <p>London is the capital city of England.</p>
+                    </div>
+                    <div id="CSS" class="tabcontent">
+                        <h3>CSS 3</h3>
+                        <p>London is the capital city of England.</p>
+                    </div>
+                    <div id="JavaScript" class="tabcontent">
+                        <h3>JavaScript</h3>
+                        <p>London is the capital city of England.</p>
+                    </div>
+                    <div id="Rjs" class="tabcontent">
+                        <h3>React.js</h3>
+                        <p>London is the capital city of England.</p>
+                    </div>
+                    <div id="Bs" class="tabcontent">
+                        <h3>BOOTSTRAP</h3>
+                        <p>Bootstrap is a popular front-end framework used for developing responsive and mobile-first websites. It provides a comprehensive set of tools and components that make web development faster and easier. Bootstrap includes pre-styled
+                            CSS classes, a responsive grid system, and powerful JavaScript plugins, allowing developers to create visually appealing and functional web pages with minimal effort.</p>
+                    </div>
+                    <div id="Php" class="tabcontent">
+                        <h3>PHP</h3>
+                        <p>PHP is a general-purpose scripting language geared towards web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1993 and released in 1995. The PHP reference implementation is now produced by
+                            the PHP Group. PHP was originally an abbreviation of Personal Home Page, but it now stands for the recursive backronym PHP: Hypertext Preprocessor.</p>
+                    </div>
+                    <div id="Tw" class="tabcontent">
+                        <h3>Tailwind</h3>
+                        <p>Tailwind CSS is a utility-first CSS framework designed for rapidly building modern websites without leaving your HTML. It allows for extensive customization, providing all the building blocks needed to create bespoke designs without
+                            predefined styles that can be cumbersome to override. Unlike frameworks like Bootstrap, Tailwind does not come with a set of predefined classes for elements, making it highly flexible and adaptable to various design needs.
+                            The framework is open-source and has a strong community, making it a popular choice among developers for creating responsive and visually appealing web applications. For more detailed information on configuration and customization,
+                            you can refer to the official documentation.</p>
+                    </div>
+                </div>
+
+                <div class="p-right">
+                    <span>Hot Update</span>
+                    <p></p>
+                </div>
+            </div>
+        </section>
+
+        <article>
+
+        </article>
+    </main>
+    <content1>
+        <div class="wrapper1">
+            <img src="/carbmw01.jpg" alt="">
+            <img src="/carbmw02.jpg" alt="">
+            <img src="/carbucati.jpg" alt="">
+            <img src="/carbmw01.jpg" alt="">
+            <img src="/carbmw02.jpg" alt="">
+            <img src="/carbucati.jpg" alt="">
+            <img src="/carbmw01.jpg" alt="">
+
+
+        </div>
+    </content1>
+    <content>
+        <div class="about-section">
+            <h1>About Us Page</h1>
+            <p>Some text about who we are and what we do.</p>
+            <p>Resize the browser window to see that this page is responsive by the way.</p>
+        </div>
+
+        <h2 style="text-align:center">Our Team</h2>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="./carbmw01.jpg" alt="Jane" style="width:100%">
+                    <div class="container">
+                        <h2>Sarou Virak Both</h2>
+                        <p class="title">CEO & Founder</p>
+                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                        <p>jane@example.com</p>
+                        <p><a href="https://both.com"><button class="button">Contact</button></a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="./carbucati.jpg" alt="Mike" style="width:100%">
+                    <div class="container">
+                        <h2>Siev Eleang</h2>
+                        <p class="title">Art Director</p>
+                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                        <p>sieveleang@rexgot.pro</p>
+                        <p><a target="_blank" href="https://rexgot.pro"><button class="button">Contact</button></a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="./carbmw02.jpg" alt="John" style="width:100%">
+                    <div class="container">
+                        <h2>Khot Sothean</h2>
+                        <p class="title">Designer</p>
+                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                        <p>khot@example.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </content>
+    <footer>
+        <h3>&copy;rexgot.pro. All rights reserved.</h3>
+    </footer>
+    <script>
+        function ValidatePassword() {
+            const password = document.getElementById("password").ValidatePassword
+
+            const lengthOK = password.length >= 8;
+            const upperOK = /[A-Z]/.test(password);
+            const lowerOK = /[a-z]/.test(password);
+            const numberOK = /[0-9]/.test(password);
+
+            updateStatus("lengthStatus", lengthOK);
+            updateStatus("upperStatus", upperOK);
+            updateStatus("lowerStatus", lowerOK);
+            updateStatus("numberStatus", numberOK);
+        }
+
+        function updateStatus(id, isValid) {
+
+            const el = document.getElementById(id);
+            el.textContent = isValid ? "R" : "N";
+        }
+
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+
+
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            // Get the button:
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+</body>
+
+
+</html>

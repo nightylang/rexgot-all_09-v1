@@ -1,0 +1,206 @@
+@media screen and (max-width: 550px) {
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        display: block;
+        position: fixed;
+        z-index: 2;
+    }
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 60px;
+    }
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    /* =========================
+    =                          =
+    =       play Style         =
+    =                          =
+    =                          =
+    ===========================*/
+    .logo {
+        top: 0;
+        display: block;
+        position: fixed;
+        border-bottom-right-radius: 40px;
+        width: 180px;
+        padding: 10px 0px 10px 10px;
+        z-index: 2;
+        background-color: rgb(255, 255, 255);
+    }
+    .logo>a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -20px;
+    }
+    .logo a,
+    h2 {
+        color: darkred;
+        text-decoration: none;
+        margin-right: 4px;
+        text-align: center;
+        padding-left: 8px;
+        font-size: 15px;
+    }
+    .logo img {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+    }
+    .btn-mobile {
+        width: 450px;
+    }
+    .btn-mobile>a {
+        font-size: 25px;
+        float: right;
+        margin-top: -40px;
+        margin-right: 15px;
+        color: darkred;
+    }
+    .spinner {
+        width: 12px;
+        height: 12px;
+        display: grid;
+        border: 0.9px solid #0000;
+        border-radius: 50%;
+        border-color: #000000 #0000;
+        animation: spinner-e04l1k 1s infinite linear;
+    }
+    .spinner::before,
+    .spinner::after {
+        content: "";
+        grid-area: 1/1;
+        margin: 1px;
+        border: inherit;
+        border-radius: 50%;
+    }
+    .spinner::before {
+        border-color: #d60000 #0000;
+        animation: inherit;
+        animation-duration: 0.5s;
+        animation-direction: reverse;
+    }
+    .spinner::after {
+        margin: 2.4px;
+    }
+    @keyframes spinner-e04l1k {
+        100% {
+            transform: rotate(1turn);
+        }
+    }
+    .glitch {
+        position: relative;
+        font-size: 23px;
+        font-weight: bold;
+        color: #ffffff;
+        letter-spacing: 3px;
+        z-index: 1;
+    }
+    .glitch-wrapper {
+        /* margin-left: 40px; */
+        max-width: 450px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 5px;
+        margin-bottom: 25px;
+        /* background-color: rgb(0, 0, 0); */
+    }
+    .glitch:before,
+    .glitch:after {
+        display: block;
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.8;
+    }
+    .glitch:before {
+        animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+        color: #00FFFF;
+        z-index: -1;
+    }
+    .glitch:after {
+        animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+        color: #FF00FF;
+        z-index: -2;
+    }
+    @keyframes glitch-it {
+        0% {
+            transform: translate(0);
+        }
+        20% {
+            transform: translate(-2px, 2px);
+        }
+        40% {
+            transform: translate(-2px, -2px);
+        }
+        60% {
+            transform: translate(2px, 2px);
+        }
+        80% {
+            transform: translate(2px, -2px);
+        }
+        to {
+            transform: translate(0);
+        }
+    }
+    .controll-iframe {
+        margin-top: 15px;
+    }
+    .iframe {
+        width: 260px;
+        height: 190px;
+        border-radius: 8px;
+    }
+    .bodys {
+        top: 100px;
+        width: 540px;
+        display: block;
+        color: aliceblue;
+        text-align: center;
+        margin-top: 10px;
+        margin: 0px;
+        background-color: none;
+    }
+    footer {
+        right: 0;
+        bottom: 0;
+        width: 465px;
+        height: 100px;
+        text-align: center;
+        color: #ffffff;
+        border-top: 1px solid white;
+        background-color: darkred;
+        padding: 5px;
+    }
+    footer span {
+        padding-top: 5px;
+        padding: 5px;
+    }
+    .own {
+        padding: 5px;
+    }
+    .i-r {
+        color: red;
+    }
+    .i-b {
+        color: blue;
+    }
+    .i-g {
+        color: green;
+    }
+}

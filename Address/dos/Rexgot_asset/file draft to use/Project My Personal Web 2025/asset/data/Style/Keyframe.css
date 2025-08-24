@@ -1,0 +1,53 @@
+@keyframes change-color1 {
+    0% {
+        color: blue;
+    }
+    25% {
+        color: rgb(0, 0, 76);
+    }
+    50% {
+        color: rgb(117, 0, 0);
+    }
+    75% {
+        color: rgb(0, 109, 187);
+    }
+    100% {
+        color: rgb(0, 0, 0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes squeeze {
+    0% {
+        inset: 0 2em 2em 0;
+    }
+    12.5% {
+        inset: 0 2em 0 0;
+    }
+    25% {
+        inset: 2em 2em 0 0;
+    }
+    37.5% {
+        inset: 2em 0 0 0;
+    }
+    50% {
+        inset: 2em 0 0 2em;
+    }
+    62.50% {
+        inset: 0 0 0 2em;
+    }
+    75% {
+        inset: 0 0 2em 2em;
+    }
+    87.5% {
+        inset: 0 0 2em 0;
+    }
+    100% {
+        inset: 0 2em 2em 0;
+    }
+}

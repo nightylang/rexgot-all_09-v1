@@ -1,0 +1,173 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title site -->
+    <title>Cosmic Store - Galaxy Marketplace</title>
+    <!-- link style extanal -->
+    <link rel="stylesheet" href="style.css">
+    <!-- link framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- Animated Stars Background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-indigo-500/30">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-home text-3xl text-indigo-400"></i>
+                    <h1 class="text-2xl font-bold orbitron glow">BOTH STORE</h1>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="hover:text-indigo-400 transition">Home</a>
+                    <a href="#products" class="hover:text-indigo-400 transition">Products</a>
+                    <a href="#about" class="hover:text-indigo-400 transition">About</a>
+                    <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search the cosmos..." class="bg-gray-900/50 border border-indigo-500/30 rounded-full px-4 py-2 pr-10 focus:outline-none focus:border-indigo-400 transition">
+                        <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <button id="cartBtn" class="relative p-2 hover:bg-indigo-500/20 rounded-full transition">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cartCount" class="absolute -top-1 -right-1 bg-pink-500 text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button class="md:hidden p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-16">
+        <div class="container mx-auto px-4 text-center z-10">
+            <h2 class="text-5xl md:text-7xl font-bold orbitron mb-6 floating">
+                <span class="galaxy-gradient bg-clip-text text-transparent">Explore the Product</span>
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300">Discover product from across the universe</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="scrollToProducts()" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 rounded-full font-semibold transition transform hover:scale-105 glow-pink">
+                    Shop Now
+                </button>
+                <button class="px-8 py-4 border-2 border-indigo-500 hover:bg-indigo-500/20 rounded-full font-semibold transition">
+                    Learn More
+                </button>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-xl"></div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 relative z-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 orbitron">Closhe Collection</h2>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterProducts('all')" class="filter-btn px-6 py-2 bg-indigo-600 rounded-full hover:bg-indigo-700 transition">
+                    All Products
+                </button>
+                <button onclick="filterProducts('tech')" class="filter-btn px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
+                    Technology
+                </button>
+                <button onclick="filterProducts('art')" class="filter-btn px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
+                    Clothse Art
+                </button>
+                <button onclick="filterProducts('gear')" class="filter-btn px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
+                    Space Gear
+                </button>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Product print here -->
+                <!-- Products will be dynamically inserted here -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 h-full w-96 bg-gray-900/95 backdrop-blur-lg cart-slide z-50 border-l border-indigo-500/30">
+        <div class="p-6 h-full flex flex-col">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold orbitron">Your Cart</h3>
+                <button onclick="toggleCart()" class="p-2 hover:bg-gray-800 rounded-full transition">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div id="cartItems" class="flex-1 overflow-y-auto space-y-4">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+
+            <div class="border-t border-gray-700 pt-4 mt-4">
+                <div class="flex justify-between text-xl font-bold mb-4">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded-full font-semibold transition">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black/50 backdrop-blur-md border-t border-indigo-500/30 py-12 mt-20 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4 orbitron">BOTH STORE</h4>
+                    <p class="text-gray-400">Your gateway to the universe's finest treasures.</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-indigo-400 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Shipping</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Customer Service</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-indigo-400 transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Follow Us</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-indigo-400 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-indigo-400 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-indigo-400 transition"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8 pt-8 border-t border-gray-800 text-gray-400">
+                <p>&copy; 2025 Both Store. All rights reserved Laravel SrunJs.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="javascript.js"></script>
+</body>
+
+</html>

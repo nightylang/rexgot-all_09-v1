@@ -1,0 +1,78 @@
+.left-items {
+    display: flex;
+    text-align: center;
+}
+
+.El-items {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 25px;
+}
+
+.tag-El {
+    font-size: 18px;
+    margin-top: -23px;
+    margin-left: 275px;
+}
+
+.tag-now {
+    color: chocolate;
+}
+
+.content-El {
+    padding: 25px;
+    margin-top: 50px;
+    --col: 16.5rem;
+    --row: 17.5rem;
+    display: grid;
+    grid-template-columns: repeat(5, var(--col));
+    grid-template-rows: repeat(4, var(--row));
+    gap: 10px;
+}
+
+.cards-El {
+    border: 1px solid black;
+    width: 250px;
+    height: 270px;
+    border-radius: 10px;
+}
+
+.card-El {
+    margin-top: 25px;
+}
+
+.info-El {
+    margin-top: -28px;
+    padding-bottom: 18px;
+}
+
+.title-El {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.tag-new-El {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    color: rgb(143, 0, 0);
+    background-color: aliceblue;
+    filter: drop-shadow(10px, white);
+}
+
+.img-card1-El img {
+    margin-top: -20px;
+}
+
+.des-El {
+    margin-top: -10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding-left: 25px;
+    text-align: left;
+    text-justify: inter-word;
+}
+
+.des-onfo-El {
+    margin-left: 30px;
+    margin-top: -10px;
+}

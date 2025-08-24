@@ -1,0 +1,68 @@
+.card-fashi {
+    display: flex;
+    flex-wrap: wrap;
+    width: 210px;
+    height: 230px;
+    margin-top: 20px;
+    border-radius: 14px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    gap: 25px;
+}
+
+.card-fashi:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 2);
+    scale: 1.02;
+}
+
+.img-card1 {
+    margin-left: -103px;
+}
+
+.img-card2 {
+    margin-left: -98px;
+}
+
+.img-card2 img {
+    width: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: -10px;
+    margin-left: -37px;
+}
+
+.img-card1 img {
+    width: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: -10px;
+    margin-left: -37px;
+}
+
+.card-fas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    /* margin-left: -20px; */
+}
+
+.info-fas {
+    width: 100%;
+    /* display: flex; */
+    margin-top: -190px;
+    margin-left: 6px;
+    gap: 10px;
+}
+
+.title-fas {
+    font-weight: bold;
+    justify-content: center;
+}
+
+.des-fas {
+    width: 300px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 180px;
+    margin-left: -180px;
+}

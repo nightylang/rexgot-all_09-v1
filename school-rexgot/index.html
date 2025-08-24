@@ -1,0 +1,715 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark" />
+    <title>Rex Got Pro - Lang</title>
+    <!-- link style extarnel -->
+    <link rel="stylesheet" href="index_style.css">
+    <link rel="stylesheet" href="listitem.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="stars" id="stars"></div>
+    <!----------------------*
+            Header html -->
+    <header>
+        <!-- header navbar top -->
+        <div class="navbar">
+            <div class="logo-site">
+                <img src="image.png">
+                <h2>++ Laravel SrunJs;</h2>
+            </div>
+            <!-- header naver option -->
+            <div class="menu-site">
+                <div class="child">event 1</div>
+                <div class="child">event 2</div>
+                <div class="child">event 3</div>
+                <div class="child">event 4</div>
+            </div>
+            <!-- User Login -->
+
+            <div class="user-login">
+                <p>
+                    <?php echo $_SESSION['name'];?>'s
+                </p>
+                <img src="Address/dos/picture/user.png">
+                <!-- php comment -->
+            </div>
+
+            <!-- end Header html -->
+        </div>
+    </header>
+    <!----------------------* 
+            main html -->
+    <main>
+        <div class="main">
+            <div class="main-title">
+                <div class="place-content">
+                    <div class="place">place</div>
+                    <div class="li-place">
+                        <select name="" id="">
+                            <option value="0"><a href="">Study</a></option>
+                            <option value="1"><a href="">Code</a></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="category">Category : <select name="" id="">
+                    <option value="1">Pro</option>
+                    <option value="2">Bot</option>
+                </select>
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <div class="bodys" id="selected">
+                <div class="option-bodys actived" onclick="filterSelection('all')">All</div>
+                <div class="option-bodys " onclick="filterSelection('font')">Fontend</div>
+                <div class="option-bodys" onclick="filterSelection('back')">Backend</div>
+                <div class="option-bodys" onclick="filterSelection('fram')">Framework</div>
+                <div class="option-bodys" onclick="filterSelection('soft')">Software Engine</div>
+            </div>
+            <div class="section">
+                <!-- count items -->
+                <!-- ========================================================================================================================= -->
+                <!-- cards left center ---------------------------------------------------------------------------------- -->
+
+
+                <div class="cards-controll fram">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9 Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i>&nbsp 9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll font">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll fram">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src=" https://tailwindcss.com/_next/static/media/tailwindcss-mark.d52e9897.svg" alt="Tailwind">
+                                <span class="h2">Tailwindcss</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <!-- end card left -->
+                <!-- ========================================================================================================================= -->
+                <!-- cards left center ---------------------------------------------------------------------------------- -->
+
+                <div class="cards-controll font">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="html.png" alt="Html">
+                                <span class="h2">HTML5</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards-controll font">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="css.png" alt="StyleSheet">
+                                <span class="h2">StyleSheet</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-controll font">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll fram">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll back">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll back">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll back">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <!-- end card right center-->
+
+
+                <!-- ========================================================================================================================= -->
+                <!-- cards right ------------------------------------------------------------------------------------------------------------- -->
+                <div class="cards-controll font">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-controll fram">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll soft">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll soft">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll font">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <div class="cards-controll soft">
+                    <div class="inside-card">
+                        <div class="terminal-top">
+                            <div class="dots-3">
+                                <div class="dot-child-1"></div>
+                                <div class="dot-child-2"></div>
+                                <div class="dot-child-3"></div>
+                            </div>
+                            <div class="title-premiun">Premium course</div>
+                            <div class="tag-premium">Premium</div>
+                        </div>
+                        <div class="card-bodys">
+                            <div class="card-bodys-top">
+                                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Boostrap">
+                                <span class="h2">Boostrap</span>
+                            </div>
+                            <div class="card-bodys-bottom">
+                                <div></div>
+                                <div class="card-list">
+                                    <div class="card-list-left">
+                                        <span><i class="fas fa-book-open"></i>&nbsp 9  Chapter</span>
+                                        <span><i class="fa fa-pencil-square"></i> &nbsp9  exams</span>
+                                        <span><i class="fa fa-code"></i>&nbsp 50 coding exercises</span>
+                                    </div>
+                                    <div class="card-list-right">
+                                        <span><i class="fa fa-clock"></i>&nbsp 12 Lesson</span>
+                                        <span><i class="fa fa-file-text"></i>&nbsp 5 Document</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a href="#">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card -->
+                <!-- end card right-->
+
+
+                <!--end card-->
+            </div>
+        </div>
+
+    </main>
+    <!-- end main html -->
+    <!----------------------*
+            footer html 
+    *----------------------->
+    <footer>
+        <div>@</div>
+        <div>Functio</div>
+        <div>Support</div>
+    </footer>
+    <script src="select.js"></script>
+</body>
+
+</html>

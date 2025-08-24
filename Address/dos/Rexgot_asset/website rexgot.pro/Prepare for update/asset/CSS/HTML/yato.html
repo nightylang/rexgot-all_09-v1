@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supercar Collection</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            padding-top: 70px;
+            /* Added padding to account for fixed header */
+        }
+        /* Red Header with Navigation */
+        
+        header {
+            background-color: #ff0000;
+            /* Red background */
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            /* Make header fixed */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            /* Smooth transition for scroll effect */
+        }
+        
+        header.scrolled {
+            background-color: rgba(255, 0, 0, 0.95);
+            /* Slightly transparent when scrolled */
+            padding: 10px 0;
+            /* Reduce padding when scrolled */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            /* Enhanced shadow when scrolled */
+        }
+        
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled .logo {
+            font-size: 24px;
+            /* Slightly smaller when scrolled */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-right: 30px;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            /* White text */
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled nav a {
+            font-size: 16px;
+            /* Slightly smaller when scrolled */
+        }
+        
+        nav a:hover {
+            color: #f0f0f0;
+            text-decoration: underline;
+        }
+        
+        .login-btn {
+            background-color: white;
+            color: #ff0000;
+            /* Red text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 30px;
+        }
+        
+        .login-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        /* Hero Section */
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://source.unsplash.com/1600x900/?supercar') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: -70px;
+            /* Compensate for fixed header */
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* Gallery Section */
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 3rem;
+        }
+        
+        .car-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .car-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .car-info {
+            padding: 1.5rem;
+        }
+        
+        .car-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #ff9900;
+        }
+        
+        .car-specs {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+        /* Footer */
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(20, 20, 20, 0.9);
+            margin-top: 2rem;
+        }
+        
+        .social-icons {
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            color: #ff9900;
+        }
+        /* Login Modal Styles */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: #222;
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid #ff0000;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            animation: modalopen 0.4s;
+        }
+        
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #ff0000;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ff9900;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        
+        .submit-btn {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #ccc;
+        }
+        
+        .form-footer a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Red Header with Navigation -->
+    <header id="main-header">
+        <div class="logo">YATO SUPERCARS</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Models</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="login-btn" id="loginBtn">Login</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>YATO SUPERCARS</h1>
+        <p class="subtitle">Experience the pinnacle of automotive engineering and design</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="car-card">
+            <a href="https://www.formula1.com/en/teams/ferrari">
+                <img src="https://cargym.com/cdn/shop/products/1gjfgogisgsipg_670x.jpg?v=1742213196" alt="Ferrari" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Ferrari SF90 Stradale</h2>
+                <span>$12,999,999</span>
+                <p class="car-specs">986 HP | 0-60 mph: 2.0s</p>
+                <p>The ultimate expression of Ferrari's most advanced technology in a road car.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.lamborghini.com/en-en#val-ht">
+                <img src="https://imgr1.auto-motor-und-sport.de/Lamborghini-Hurac-n-STJ-F1102x620-FFFFFF-C-79f96678-2096344.jpg" alt="Lamborghini" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Lamborghini Aventador</h2>
+                <span>$5,999,999</span>
+                <p class="car-specs">780 HP | 0-60 mph: 2.8s</p>
+                <p>Raw power and aggressive styling define this Italian masterpiece.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.mclaren.com/">
+                <img src="https://di-uploads-pod43.dealerinspire.com/mclarensanfrancisco/uploads/2022/04/720s.jpg" alt="McLaren" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">McLaren P1</h2>
+                <span>$9,999,999</span>
+                <p class="car-specs">903 HP | 0-60 mph: 2.7s</p>
+                <p>A hybrid hypercar that blends F1 technology with road-going practicality.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.bugatti.com/">
+                <img src="https://cdn.motor1.com/images/mgl/3LzK6/s1/bugatti-chiron-super-sport.jpg" alt="Bugatti" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Bugatti Chiron Super Sport</h2>
+                <span>$15,999,999</span>
+                <p class="car-specs">1,578 HP | 0-60 mph: 2.3s</p>
+                <p>The pinnacle of automotive engineering with unparalleled speed and luxury.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.porsche.com/">
+                <img src="https://www.topgear.com/sites/default/files/2022/11/911-gt3-rs-992-hero.jpg" alt="Porsche" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Porsche 911 GT3 RS</h2>
+                <span>$3,999,999</span>
+                <p class="car-specs">518 HP | 0-60 mph: 2.7s</p>
+                <p>Track-focused precision engineering with everyday usability.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.astonmartin.com/">
+                <img src="https://www.topgear.com/sites/default/files/2022/07/dbx707-hero.jpg" alt="Aston Martin" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Aston Martin DB11</h2>
+                <span>$4,999,999</span>
+                <p class="car-specs">630 HP | 0-60 mph: 3.7s</p>
+                <p>British elegance combined with formidable performance.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.koenigsegg.com/">
+
+                <img src="https://www.topgear.com/sites/default/files/2022/03/jesko-absolut-hero.jpg" alt="Koenigsegg" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Koenigsegg Jesko</h2>
+                <span>$18,999,999</span>
+                <p class="car-specs">1,600 HP | 0-60 mph: 2.5s</p>
+                <p>A Swedish hypercar designed to break speed records.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.pagani.com/">
+                <img src="https://www.topgear.com/sites/default/files/2022/05/huayra-r-hero.jpg" alt="Pagani" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Pagani Huayra R</h2>
+                <span>$8,999,999</span>
+                <p class="car-specs">838 HP | 0-60 mph: 2.3s</p>
+                <p>Italian artistry meets extreme performance in this track-only masterpiece.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.ford.com/">
+                <img src="https://www.topgear.com/sites/default/files/2022/01/ford-gt-hero.jpg" alt="Ford" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Ford GT</h2>
+                <span>$7,999,999</span>
+                <p class="car-specs">660 HP | 0-60 mph: 2.8s</p>
+                <p>An American icon reimagined with cutting-edge technology.</p>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <a href="https://www.mercedes-amg.com/">
+                <img src="https://www.topgear.com/sites/default/files/2022/05/amg-gt-r-63-s-e-performance-hero.jpg" alt="Mercedes" class="car-image">
+            </a>
+            <div class="car-info">
+                <h2 class="car-title">Mercedes-AMG GT R</h2>
+                <span>$3,499,999</span>
+                <p class="car-specs">585 HP | 0-60 mph: 3.5s</p>
+                <p>German engineering excellence with a focus on performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Supercar Collection. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/sothean.khot">facebook</a>
+            <a href="#">IG</a>
+            <a href="#">TW</a><br>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 20px; color: #ff9900;">Login to YATO SUPERCARS</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#">Sign up</a></p>
+                    <p><a href="#">Forgot password?</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Get the modal
+        const modal = document.getElementById("loginModal");
+
+        // Get the button that opens the modal
+        const btn = document.getElementById("loginBtn");
+
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Handle form submission
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Here you would typically send the login data to a server
+            // For this example, we'll just show an alert
+            alert(`Login attempt with username: ${username}`);
+
+            // Close the modal
+            modal.style.display = "none";
+
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>

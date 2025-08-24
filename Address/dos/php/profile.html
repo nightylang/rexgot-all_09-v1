@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="./media.min.css">
+</head>
+
+<body>
+    <div class="main">
+        <div>
+            <h2> Wellcome
+                <?php echo $_SESSION['email'];?> is your Profile</h2>
+
+
+
+            <img src="">
+            <img class="bor-rad-70p" src="Rexgot_asset/Asset/file_image/images_our_team/lang.jpg" width="150px" height="150px"> <a class="a color-r hidden" href="">Change</a>
+            <div class="bor-top ma-t-10 d-flex-ali">Name:siev eleang peo
+                <?php echo $_SESSION['name'];?> <a id="myLinks" class="a color-r ma-l-10 hidden" href="">Edit</a>
+            </div>
+            <div>Major:
+                <?php echo $_SESSION['major'];?> <a class="a color-r hidden" href="">Edit</a>
+            </div>
+            <div>Date of Birth:
+                <?php echo $_SESSION['name'];?> <a class="a color-r hidden" href="">Edit</a>
+            </div>
+            <div>Phone:
+                <?php echo $_SESSION['phone'];?> <a class="a color-r hidden" href="">Edit</a>
+            </div>
+            <div>Email:
+                <?php echo $_SESSION['email'];?>
+            </div>
+            <div>Your Balance:
+                <?php echo $_SESSION['usdk'];?> _$ <a class="a color-r" href="">Add</a>
+            </div>
+            <div class="ma-t-20 ma-l-20">
+                <button onclick="myFunction()">Edit mode</button>
+                <button>Save</button>
+                <button>Unsave</button>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+        document.getElementById('hidden-btn').addEventListener('click', () => {
+            document.getElementById('myLinks').classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

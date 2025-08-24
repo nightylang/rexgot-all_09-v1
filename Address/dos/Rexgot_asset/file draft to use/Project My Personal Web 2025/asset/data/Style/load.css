@@ -1,0 +1,60 @@
+.load {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    --color1: #ce760b;
+    --color2: blue;
+    --color3: rgb(0, 0, 0);
+    --color4: blue;
+    width: 3.75em;
+    aspect-ratio: 1;
+    position: relative;
+    animation: spin 10000ms infinite linear;
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    position: absolute;
+    background: var(--color1);
+    animation: squeeze 3000ms infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes squeeze {
+    0% {
+        inset: 0 2em 2em 0;
+    }
+    12.5% {
+        inset: 0 2em 0 0;
+    }
+    25% {
+        inset: 2em 2em 0 0;
+    }
+    37.5% {
+        inset: 2em 0 0 0;
+    }
+    50% {
+        inset: 2em 0 0 2em;
+    }
+    62.50% {
+        inset: 0 0 0 2em;
+    }
+    75% {
+        inset: 0 0 2em 2em;
+    }
+    87.5% {
+        inset: 0 0 2em 0;
+    }
+    100% {
+        inset: 0 2em 2em 0;
+    }
+}

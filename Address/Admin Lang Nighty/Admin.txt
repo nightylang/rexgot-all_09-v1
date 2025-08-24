@@ -1,0 +1,6 @@
+Rex Got Pro myadmin
+Position: Admin
+username: rexgotpro
+password: rexgotpro123$
+mydomain: rexgotpro.com
+domain host: namecheap.com

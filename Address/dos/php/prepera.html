@@ -1,0 +1,187 @@
+<header>
+    <div class="header">
+        <div class="container">
+            <!-- logo -->
+            <div class="h-logo">
+                <img src="asset_aba/image/aba-web-top-logo.png">
+            </div>
+            <!-- service -->
+            <div class="h-option">
+                <ul class="main">
+                    <li class="ma-l-10"><a href="#">About ABA</a></li>
+                    <li class="ma-l-10"><a href="#">Careers</a></li>
+                    <li class="ma-l-10"><a href="#">News</a></li>
+                    <li class="ma-l-10"><a href="#">Promotions</a></li>
+                </ul>
+            </div>
+            <!-- more -->
+            <div class="h-search">
+                <input type="search"><span><i class="fas fa-search"></i></span>
+                <ul>
+                    <li><a href="#">KH</a></li>
+                    <li class="hidden"><a href="#">EN</a></li>
+                </ul>
+                <div class="btn"><a href="#">ABA Business</a></div>
+            </div>
+
+        </div>
+        <div class="hidden">
+            <ul class="menu">
+                <li><a href="#">Personal</a></li>
+                <ul>
+                    <li><a href="#"><b>Accounts and Deposits</b><br> Daily banking accounts and term deposits</a></li>
+                    <li><a href="#"><b>Loans Loans</b><br> for the comfort of your business</a></li>
+                    <li><a href="#"><b>Money Transfers</b><br>Ways to transfer funds in Cambodia and overseas</a></li>
+                    <li><a href="#"><b>Payment Cards</b><br>Debit card, credit cards and even more!</a></li>
+                    <li><a href="#"><b>How​ to​ Top​ Up​ ABA​ Account​</b><br>Enjoy​ using​ your​ ABA​ account​ and​ top​ it​ up​ quickly!</a></li>
+                    <li><a href="#"><b>Manulife Insurance</b><br>Debit card, credit cards and even more!</a></li>
+                </ul>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">ABA Mobile</a></li>
+                <li><a href="#">Self-Banking</a></li>
+                <li><a href="#">Oriental Desk</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="s-dots" style="text-align:right">
+        <img class="mySlides fade" src="" alt="">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</header>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    /* Header */
+    
+    ul>li {
+        list-style-type: none;
+    }
+    
+    a {
+        color: azure;
+    }
+    
+    header {
+        max-width: 940px;
+        height: 129px;
+    }
+    
+    .header {
+        background-color: blue;
+        max-width: 940px;
+        height: 129px;
+    }
+    
+    .h-logo {
+        width: 100px;
+        background-color: aliceblue;
+    }
+    
+    .h-logo>img {
+        height: 110px;
+    }
+    
+    .h-option {
+        width: 720px;
+        display: flex;
+    }
+    
+    .h-search {
+        width: 120px;
+        display: flex;
+        align-items: center;
+    }
+    
+    container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 940px;
+        height: 129px;
+    }
+    
+    .menu {
+        background-color: blue;
+        width: 100%;
+        height: 40px;
+    }
+    
+    .slide {
+        width: 100%;
+        height: 367px;
+    }
+    /* height: 302px
+    margin-top:9px
+    margin-bottom: 40px*/
+    
+    .content {
+        display: flex;
+        max-width: 940px;
+    }
+    
+    .cardre {
+        width: 293px;
+        height: 243px;
+        padding: 5px;
+        padding-left: 10px;
+        border-radius: 8px;
+    }
+</style>
+<style>
+    .banner-slide {
+        height: 364px;
+    }
+    
+    .s-dots {
+        margin-right: 350px;
+    }
+    
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #FFFFFF;
+        border-radius: 50%;
+        border: 1px solid #777070;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        z-index: 2;
+    }
+    
+    .active {
+        background-color: #FF0000;
+        z-index: 2;
+    }
+    
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+        to {
+            opacity: 1
+        }
+    }
+    
+    @media only screen and (max-width: 300px) {
+        .text {
+            font-size: 11px
+        }
+    }
+</style>

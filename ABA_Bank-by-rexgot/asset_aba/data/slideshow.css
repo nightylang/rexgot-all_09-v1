@@ -1,0 +1,133 @@
+/* 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+} */
+
+.slideshow-container {
+    width: 100%;
+    /* position: relative; */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+}
+
+.slide-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.slide-description {
+    font-size: 16px;
+    max-width: 600px;
+}
+
+.nav-button {
+    display: flex;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    /* backdrop-filter: blur(10px); */
+    color: white;
+    font-size: 2rem;
+    padding: 15px 20px;
+    width: 20px;
+    height: 80px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    z-index: 4;
+}
+
+.nav-button:hover {
+    opacity: 0.9;
+    background-color: transparent;
+}
+
+.prev {
+    background-color: transparent;
+    opacity: 0.2;
+    left: 110px;
+    background-image: url(asset_aba/image/slideshow-arrows-next.png);
+}
+
+.next {
+    background-color: transparent;
+    opacity: 0.2;
+    right: 110px;
+    background-image: url(asset_aba/image/slideshow-arrows-pre.png);
+}
+
+.dots-container {
+    margin-left: 360px;
+    margin-top: -55px;
+    position: absolute;
+    /* bottom: 15px; */
+    left: 50%;
+    overflow: hidden;
+    z-index: 4;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    border: 2px solid #807D7F;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #F1F1F1;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #FF0000;
+}
+
+@media (max-width: 600px) {
+    .slide {
+        height: 300px;
+    }
+    .slide-title {
+        font-size: 22px;
+    }
+    .slide-description {
+        font-size: 14px;
+    }
+}

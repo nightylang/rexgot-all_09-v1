@@ -1,0 +1,30 @@
+/* scroll */
+
+#navbar {
+    background-color: #003E5B;
+    max-width: 940px;
+    width: 100%;
+    /*
+    width: 100%;
+    overflow: hidden;
+   
+    padding: 10px 10px;
+    transition: 0.4s;
+    position: fixed;
+    width: 100%;
+    top: 125;*/
+    z-index: 99;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+}
+
+#logom {
+    position: sticky;
+    top: 0;
+    margin-left: 0;
+    opacity: 1;
+}
+
+
+/* end scroll */

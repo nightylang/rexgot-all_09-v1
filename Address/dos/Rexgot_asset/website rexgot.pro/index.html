@@ -1,0 +1,707 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="icon/x-image" href="./profile.jpg">
+    <title>Rex Got Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            background-color: black;
+        }
+        
+        .spinner {
+            width: 24px;
+            height: 24px;
+            display: grid;
+            border: 1.9px solid #0000;
+            border-radius: 50%;
+            border-color: #000000 #0000;
+            animation: spinner-e04l1k 1s infinite linear;
+        }
+        
+        .spinner::before,
+        .spinner::after {
+            content: "";
+            grid-area: 1/1;
+            margin: 1px;
+            border: inherit;
+            border-radius: 50%;
+        }
+        
+        .spinner::before {
+            border-color: #d60000 #0000;
+            animation: inherit;
+            animation-duration: 0.5s;
+            animation-direction: reverse;
+        }
+        
+        .spinner::after {
+            margin: 3.9px;
+        }
+        
+        @keyframes spinner-e04l1k {
+            100% {
+                transform: rotate(1turn);
+            }
+        }
+        
+        .logo {
+            top: 0;
+            display: block;
+            position: fixed;
+            border-bottom-right-radius: 60px;
+            width: 300px;
+            padding: 15px;
+            z-index: 1;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        
+        .logo h2 {
+            margin-right: 6px;
+            text-align: center;
+            padding-left: 8px;
+            font-size: 20px;
+        }
+        
+        .logo a {
+            top: 0;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 18px;
+            color: brown;
+        }
+        
+        .tittle-hea {
+            margin-top: 30px;
+            display: block;
+            position: fixed;
+        }
+        
+        .glitch-wrapper {
+            margin-top: -60px;
+            margin-left: 465px;
+            width: 600px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5px;
+            background-color: black;
+        }
+        
+        .glitch {
+            position: relative;
+            font-size: 25px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 3px;
+            z-index: 1;
+        }
+        
+        .glitch:before,
+        .glitch:after {
+            display: block;
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.8;
+        }
+        
+        .glitch:before {
+            animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+            color: #00FFFF;
+            z-index: -1;
+        }
+        
+        .glitch:after {
+            animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+            color: #FF00FF;
+            z-index: -2;
+        }
+        
+        @keyframes glitch-it {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            to {
+                transform: translate(0);
+            }
+        }
+        
+        .left {
+            display: block;
+            float: left;
+        }
+        
+        .layout {
+            margin-top: 30px;
+            width: 100%;
+            display: block;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .sidebar {
+            display: block;
+            margin-top: 60px;
+            margin-left: 25px;
+            position: fixed;
+            border-bottom-right-radius: 60px;
+            width: 130px;
+            height: 500px;
+            padding: 12px;
+        }
+        
+        .icon {
+            display: none;
+        }
+        
+        .navsidebar ul a {
+            color: crimson;
+            list-style-type: none;
+            text-decoration: none;
+            padding: 5px;
+            padding-left: 10px;
+        }
+        
+        .navsidebar a li {
+            font-size: large;
+            width: 150px;
+        }
+        
+        .navsidebar a li:hover {
+            color: rgb(165, 69, 0);
+            border-bottom: 1.5px solid white;
+            width: 150px;
+        }
+        
+        .bodys {
+            width: 100%;
+            margin-left: 200px;
+            display: block;
+            background-color: rgb(0, 0, 0);
+            color: aliceblue;
+            text-align: center;
+            margin: 35px;
+        }
+        
+        .controll-iframe {
+            margin: 25px;
+        }
+        
+        .iframe {
+            width: 560px;
+            height: 315px;
+            border-radius: 8px;
+        }
+    </style>
+    <style>
+        @media screen and (max-width: 992px) {
+            html,
+            body {
+                margin: 0px;
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                grid-template-areas: "header" "section";
+                background-color: darkred;
+            }
+            .logo {
+                grid-area: header;
+            }
+            .glitch-wrapper {
+                grid-area: section;
+            }
+            .logo {
+                top: 0;
+                display: block;
+                position: fixed;
+                border-bottom-right-radius: 40px;
+                width: 180px;
+                padding: 10px;
+                z-index: 2;
+                background-color: rgb(255, 255, 255);
+            }
+            .logo h2 {
+                margin-right: 4px;
+                text-align: center;
+                padding-left: 8px;
+                font-size: 15px;
+            }
+            .logo img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+            .tittle-hea {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .glitch-wrapper {
+                margin-top: 0px;
+                margin-left: 270px;
+                width: 400px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 5px;
+                margin-bottom: 25px;
+                background-color: rgb(0, 0, 0);
+            }
+            .sidebar {
+                display: none;
+                margin-top: 80px;
+                margin-left: 5px;
+                position: fixed;
+                width: 110px;
+                padding: 12px;
+            }
+            .navsidebar a.icon {
+                color: red;
+                background: black;
+                display: block;
+                position: fixed;
+                right: 0;
+                top: 0;
+            }
+            .navsidebar a li {
+                font-size: 12px;
+                width: 120px;
+            }
+            .navsidebar a li:hover {
+                color: rgb(165, 69, 0);
+                border-bottom: 1.5px solid white;
+                width: 120px;
+            }
+            .navsidebar ul a {
+                color: crimson;
+                list-style-type: none;
+                text-decoration: none;
+                padding: 5px;
+                padding-left: 3px;
+            }
+            .layout {
+                width: 100%;
+                margin-top: 50px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+            .controll-iframe {
+                margin-top: 15px;
+            }
+            .iframe {
+                width: 360px;
+                height: 215px;
+                border-radius: 8px;
+            }
+            .bodys {
+                color: aliceblue;
+                text-align: center;
+                margin-top: 10px;
+                margin: 0px;
+            }
+            footer {
+                width: 100%;
+                height: 100px;
+                text-align: center;
+                color: #ffffff;
+                border-top: 1px solid white;
+                background-color: darkred;
+                padding: 5px;
+            }
+            footer span {
+                padding-top: 10px;
+                padding: 5px;
+            }
+            .own {
+                padding: 18px;
+            }
+            .i-r {
+                color: red;
+            }
+            .i-b {
+                color: blue;
+            }
+            .i-g {
+                color: green;
+            }
+        }
+    </style>
+    <style>
+        @media screen and (max-width: 550px) {
+            html,
+            body {
+                margin: 0px;
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                grid-template-areas: "header" "section";
+                background-color: black;
+            }
+            .logo {
+                grid-area: header;
+            }
+            .glitch-wrapper {
+                grid-area: section;
+            }
+            .logo {
+                top: 0;
+                display: block;
+                position: fixed;
+                border-bottom-right-radius: 40px;
+                width: 180px;
+                padding: 10px;
+                z-index: 2;
+                background-color: rgb(255, 255, 255);
+            }
+            .logo h2 {
+                margin-right: 4px;
+                text-align: center;
+                padding-left: 8px;
+                font-size: 15px;
+            }
+            .logo img {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+            }
+            .tittle-hea {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .glitch-wrapper {
+                margin-top: 0px;
+                margin-left: 40px;
+                width: 400px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 5px;
+                margin-bottom: 25px;
+                background-color: rgb(0, 0, 0);
+            }
+            .sidebar {
+                display: none;
+                margin-top: 50px;
+                margin-left: 5px;
+                position: fixed;
+                width: 90px;
+                padding: 12px;
+            }
+            .navsidebar {
+                background: white;
+                display: block;
+                position: fixed;
+                right: 30px;
+                top: 30px;
+                z-index: 2;
+            }
+            .icon {
+                display: block;
+            }
+            .navsidebar a li {
+                font-size: 12px;
+                width: 120px;
+            }
+            .navsidebar a li:hover {
+                color: rgb(165, 69, 0);
+                border-bottom: 1.5px solid white;
+                width: 120px;
+            }
+            .navsidebar ul a {
+                color: crimson;
+                list-style-type: none;
+                text-decoration: none;
+                padding: 5px;
+                padding-left: 3px;
+            }
+            .layout {
+                margin-top: 50px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+            .controll-iframe {
+                margin-top: 15px;
+            }
+            .iframe {
+                width: 260px;
+                height: 190px;
+                border-radius: 8px;
+            }
+            .bodys {
+                color: aliceblue;
+                text-align: center;
+                margin-top: 10px;
+                margin: 0px;
+            }
+            .spinner {
+                width: 12px;
+                height: 12px;
+                display: grid;
+                border: 0.9px solid #0000;
+                border-radius: 50%;
+                border-color: #000000 #0000;
+                animation: spinner-e04l1k 1s infinite linear;
+            }
+            .spinner::before,
+            .spinner::after {
+                content: "";
+                grid-area: 1/1;
+                margin: 1px;
+                border: inherit;
+                border-radius: 50%;
+            }
+            .spinner::before {
+                border-color: #d60000 #0000;
+                animation: inherit;
+                animation-duration: 0.5s;
+                animation-direction: reverse;
+            }
+            .spinner::after {
+                margin: 2.4px;
+            }
+            @keyframes spinner-e04l1k {
+                100% {
+                    transform: rotate(1turn);
+                }
+            }
+            footer {
+                width: 478px;
+                height: 100px;
+                text-align: center;
+                color: #ffffff;
+                border-top: 1px solid white;
+                background-color: darkred;
+                padding: 5px;
+            }
+            footer span {
+                padding-top: 10px;
+                padding: 5px;
+            }
+            .own {
+                padding: 18px;
+            }
+            .i-r {
+                color: red;
+            }
+            .i-b {
+                color: blue;
+            }
+            .i-g {
+                color: green;
+            }
+        }
+    </style>
+    <style>
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%,
+            20% {
+                content: '';
+            }
+            40% {
+                content: '.';
+            }
+            60% {
+                content: '..';
+            }
+            80%,
+            100% {
+                content: '...';
+            }
+        }
+        
+        .skeleton-line {
+            height: 16px;
+            background: linear-gradient(90deg, #f0f0f0d3 25%, #e0e0e0c7 50%, rgb(186, 186, 186) 75%);
+            background-size: 200% 100%;
+            animation: loadinge 1.5s infinite;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .skeleton-line:nth-child(1) {
+            width: 75%;
+        }
+        
+        .skeleton-line:nth-child(2) {
+            width: 100%;
+        }
+        
+        .skeleton-line:nth-child(3) {
+            width: 85%;
+        }
+        
+        .skeleton-line:nth-child(4) {
+            width: 65%;
+        }
+        
+        @keyframes loadinge {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+
+
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="javascript:void(0);" id="hidden-btn" class="icon" onclick="myFunction()">
+                <img src="profile.jpg">
+                <h2>REX GOT Pro</h2>
+                <div class="spinner"></div>
+            </a>
+        </div>
+        <div class="sidebar" id="myLinks">
+            <div class="navsidebar">
+                <ul>
+                    <a target="_blank" href="rexgotpro/project.html">
+                        <li>Project Source</li>
+                    </a>
+                    <a href="rexgotpro/aboutrexgote.html">
+                        <li>About Rex-P</li>
+                    </a>
+                    <a href="rexgotpro/bankrexgot.html">
+                        <li class="loading-dots">Event updating</li>
+                    </a>
+                    <a href="rexgotpro/genarate/genaratorcode.html">
+                        <li class="loading-dots">Event updating</li>
+                    </a>
+                    <a href="qrcode.html">
+                        <li class="loading-dots">Event updating</li>
+                    </a>
+                    <a href="rexgotpro/dashboardrexgot.html">
+                        <li class="loading-dots">Event updating</li>
+                    </a>
+                </ul>
+
+            </div>
+
+        </div>
+        <a href="javascript:void(0);" id="hidden-btn" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+
+    </header>
+    <section class="layout ">
+        <div class="bodys left">
+            <div class="glitch-wrapper">
+                <div class="glitch" data-text="REX GOT Pro">REX GOT Pro</div>
+            </div>
+
+            <h2>Welcome to My Site REX_GOT PRO</h2><br/>
+            <p> Hello this will upcoming soon for </p>
+
+            <div class="controll-iframe">
+                <iframe class="iframe" src="https://www.youtube.com/embed/aSQq1ewECgk?si=gbsyiH6uedkwJ5NL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe><br>
+            </div>
+
+            <div class="controll-iframe">
+                <iframe class="iframe" src="https://www.youtube.com/embed/CIBmVXteOcI?si=fwVN8kJmPs_X-1A_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe><br>
+            </div>
+
+            <div class="controll-iframe">
+                <iframe class="iframe" src="https://www.youtube.com/embed/W013Y3UInoQ?si=PFIXeXdORhwq3FU-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe><br>
+            </div>
+
+            <div class="controll-iframe">
+                <iframe class="iframe" src="https://www.youtube.com/embed/ISJ44S5sZu8?si=PN1lD3DP_Zxc1qJH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe><br>
+            </div>
+
+            <div class="controll-iframe">
+                <iframe class="iframe" src="https://www.youtube.com/embed/pYHerqoa41Q?si=U2QZm9vCYme45_1E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe><br>
+            </div>
+
+            <div class="controll-iframe">
+                <iframe class="iframe" src="https://www.youtube.com/embed/0pM7UM6cLDU?si=PwcH26NHACPWNIdK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe><br>
+            </div>
+
+        </div>
+    </section>
+    <footer>
+        <div>
+            <p>This is my sponser</p>
+            <span class="i-r"><i class=" fa fa-"></i>YouTube</span>
+            <span class="i-b"><i class="fa fa-"></i>Amazon</span>
+            <span class="i-g"><i class="fa fa-"></i>Famlo</span>
+            <p class="own">Powered by Lang Laravel</p>
+        </div>
+    </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+        document.getElementById('hidden-btn').addEventListener('click', () => {
+            document.getElementById('myLinks').classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

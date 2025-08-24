@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:root {
+    --primary-color: #8b0008;
+    --second-color: darkblue;
+    --third--color: rgb(194, 74, 0);
+    --card--color: gray;
+    --text--color: white;
+    --a--color: #8b0008;
+    --succes--color: green;
+    --footer--color: rgb(0, 0, 36);
+}
+
+
+/*======= root for position =======*/
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.a-text {
+    color: var(--text--color);
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.text-size-lap {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32px;
+}
+
+.text-size-tabl {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+
+.text-size-phone {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+}
+
+.center {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.a-space {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.d-none {
+    display: none;
+}
+
+.hover-a:hover {
+    color: var(--second-color);
+    border-bottom: 1.2px solid var(--second-color);
+}
+
+.sec-bg {
+    background-color: var(--third--color);
+}
+
+.sec-border {
+    border-top: 1.2px solid var(--second-color);
+    border-bottom: 1.2px solid var(--second-color);
+}
+
+.move {
+    cursor: move;
+}
+
+.pionter {
+    cursor: pointer;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+
+/*======= end root =======*/
+
+
+/*============ Root Card  ===============*/
+
+.list-card {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+.name-item {
+    font-size: 25px;
+}
+
+.price-item {
+    font-size: 19px;
+}
+
+
+/*============ end Root Card  ===============*/
+
+html,
+body {
+    font-size: large;
+}
+
+p {
+    color: var(--text--color);
+}
+
+
+/*======    Header menu  ======*/
+
+header {
+    background-color: var(--primary-color);
+    margin: 0px;
+    padding: 0px 2px 25px 10px;
+}
+
+.menu-ul {
+    display: block;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.menu-ul ul {
+    margin-left: 25px;
+}
+
+.menu-ul ul a li {
+    display: inline-block;
+    color: var(--text--color);
+}
+
+
+/*=======   end header menu =======*/
+
+
+/*======    main content  ======*/
+
+main {
+    background-color: var(--primary-color);
+}
+
+
+/*======= main aside =======*/
+
+aside {
+    background-color: var(--second-color);
+}
+
+
+/*======= end aside =======*/
+
+
+/*======= main bodys =======*/
+
+bodys {
+    background-color: var(--primary-color);
+}
+
+
+/*======= end bodys =======*/
+
+
+/*=======   end main content =======*/
+
+
+/*======= footer =======*/
+
+footer {
+    background-color: var(--footer--color);
+}
+
+
+/*======= end footer =======*/

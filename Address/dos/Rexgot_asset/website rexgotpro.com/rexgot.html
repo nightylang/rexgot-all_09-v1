@@ -1,0 +1,685 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rex Got Pro - Watch TV Shows Online, Watch Movies Online</title>
+    <style>
+         :root {
+            --primary-color: #e50914;
+            --primary-dark: #b0070d;
+            --dark-color: #141414;
+            --dark-light: #222;
+            --light-color: #f4f4f4;
+            --light-gray: #999;
+            --transition-speed: 0.3s;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            line-height: 1.4;
+        }
+        /* Header Styles */
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 4%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+            z-index: 1000;
+            transition: all var(--transition-speed);
+        }
+        
+        header.scrolled {
+            background: var(--dark-color);
+            box-shadow: var(--shadow);
+            padding: 10px 4%;
+        }
+        
+        .logo {
+            height: 36px;
+            color: var(--primary-color);
+        }
+        
+        .logo h2 {
+            height: 100%;
+            width: auto;
+            font-size: large;
+        }
+        
+        .logo h2 span {
+            font-size: 32px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-dark);
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-menu img {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+        /* Hero Section */
+        
+        .hero {
+            height: 100vh;
+            position: relative;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, var(--dark-color) 0%, transparent 100%);
+            z-index: 1;
+        }
+        
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .hero-content {
+            position: absolute;
+            bottom: 15%;
+            left: 4%;
+            max-width: 500px;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s 0.3s forwards;
+        }
+        
+        .hero-title {
+            width: 100%;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+        }
+        
+        .hero-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 25px;
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        /* Content Sections */
+        
+        .content-section {
+            padding: 0 4%;
+            margin-bottom: 40px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .see-all {
+            color: var(--light-gray);
+            font-size: 14px;
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        
+        .see-all:hover {
+            color: var(--primary-color);
+        }
+        
+        .content-row {
+            display: flex;
+            overflow-x: scroll;
+            gap: 8px;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            position: relative;
+        }
+        
+        .content-row::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .content-item {
+            min-width: 220px;
+            transition: transform var(--transition-speed);
+            position: relative;
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .content-item:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        
+        .content-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all var(--transition-speed);
+        }
+        
+        .content-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity var(--transition-speed);
+            pointer-events: none;
+        }
+        
+        .content-item:hover .item-info {
+            opacity: 1;
+        }
+        
+        .item-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .item-meta {
+            display: flex;
+            gap: 10px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .match-percent {
+            color: #46d369;
+            font-weight: bold;
+        }
+        /* Footer */
+        
+        footer {
+            padding: 50px 4% 30px;
+            background-color: var(--dark-color);
+            color: var(--light-gray);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            color: var(--light-gray);
+            font-size: 12px;
+        }
+        /* Animations */
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive styles */
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                max-width: 60%;
+            }
+            .footer-links {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-content {
+                max-width: 90%;
+                bottom: 20%;
+            }
+            .hero-description {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+            .btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            .content-item {
+                min-width: 180px;
+            }
+            .section-title {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 60vh;
+            }
+            .hero-content {
+                bottom: 15%;
+            }
+            .hero-title {
+                width: 80%;
+                margin-bottom: 10px
+            }
+            .content-item {
+                min-width: 140px;
+            }
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h2 focusable="false">
+                <span id="netflix-logo">
+                    Rex Got Pro
+                </span>
+            </h2>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Movies</a>
+            <a href="#">New & Popular</a>
+            <a href="#">My List</a>
+        </nav>
+        <div class="user-menu">
+            <button class="icon-btn" aria-label="Search">🔍</button>
+            <button class="icon-btn" aria-label="Notifications">🔔</button>
+            <img src="Rexgot_asset/Asset/images/profile.png" alt="User profile avatar">
+        </div>
+    </header>
+
+    <section class="hero">
+        <img src="https://placehold.co/1920x1080?text=Dramatic+Movie+Scene" alt="Dramatic movie scene showing the protagonist standing in a futuristic city">
+        <div class="hero-content">
+            <img class="hero-title" src="https://placehold.co/400x100?text=THE+LAST+KINGDOM" alt="The Last Kingdom official series title logo">
+            <p class="hero-description">In a world torn apart by war and conquest, one warrior rises to unite the kingdoms of medieval England. Watch the epic conclusion to this gripping saga.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">▶ Play</button>
+                <button class="btn btn-secondary">ℹ More Info</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">Popular on StreamFlix</h2>
+            <a href="#" class="see-all">See All</a>
+        </div>
+        <div class="content-row">
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Stranger+Things" alt="Stranger Things promotional image featuring ensemble cast">
+                <div class="item-info">
+                    <h3 class="item-title">Stranger Things</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">98% Match</span>
+                        <span>4 Seasons</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=The+Witcher" alt="The Witcher promotional image featuring Geralt of Rivia">
+                <div class="item-info">
+                    <h3 class="item-title">The Witcher</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">94% Match</span>
+                        <span>2 Seasons</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Breaking+Bad" alt="Breaking Bad promotional image featuring Walter White">
+                <div class="item-info">
+                    <h3 class="item-title">Breaking Bad</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">99% Match</span>
+                        <span>5 Seasons</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=The+Crown" alt="The Crown promotional image featuring royal family">
+                <div class="item-info">
+                    <h3 class="item-title">The Crown</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">92% Match</span>
+                        <span>4 Seasons</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Peaky+Blinders" alt="Peaky Blinders promotional image featuring gang ensemble">
+                <div class="item-info">
+                    <h3 class="item-title">Peaky Blinders</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">96% Match</span>
+                        <span>6 Seasons</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">Trending Now</h2>
+            <a href="#" class="see-all">See All</a>
+        </div>
+        <div class="content-row">
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Squid+Game" alt="Squid Game promotional image featuring contestants">
+                <div class="item-info">
+                    <h3 class="item-title">Squid Game</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">97% Match</span>
+                        <span>1 Season</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Money+Heist" alt="Money Heist promotional image featuring robbers">
+                <div class="item-info">
+                    <h3 class="item-title">Money Heist</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">95% Match</span>
+                        <span>5 Parts</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Dark" alt="Dark promotional image featuring mysterious cave">
+                <div class="item-info">
+                    <h3 class="item-title">Dark</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">98% Match</span>
+                        <span>3 Seasons</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Bridgerton" alt="Bridgerton promotional image featuring aristocrats">
+                <div class="item-info">
+                    <h3 class="item-title">Bridgerton</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">94% Match</span>
+                        <span>2 Seasons</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Ozark" alt="Ozark promotional image featuring dramatic scene">
+                <div class="item-info">
+                    <h3 class="item-title">Ozark</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">96% Match</span>
+                        <span>4 Seasons</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">New Releases</h2>
+            <a href="#" class="see-all">See All</a>
+        </div>
+        <div class="content-row">
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=The+Sandman" alt="The Sandman promotional image featuring Dream">
+                <div class="item-info">
+                    <h3 class="item-title">The Sandman</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">94% Match</span>
+                        <span>1 Season</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Wednesday" alt="Wednesday promotional image featuring Wednesday Addams">
+                <div class="item-info">
+                    <h3 class="item-title">Wednesday</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">96% Match</span>
+                        <span>1 Season</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Dahmer" alt="Dahmer promotional image featuring eerie scene">
+                <div class="item-info">
+                    <h3 class="item-title">Dahmer</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">93% Match</span>
+                        <span>1 Season</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=The+Bear" alt="The Bear promotional image featuring chef">
+                <div class="item-info">
+                    <h3 class="item-title">The Bear</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">97% Match</span>
+                        <span>2 Seasons</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <img src="https://placehold.co/220x124?text=Severance" alt="Severance promotional image featuring office scene">
+                <div class="item-info">
+                    <h3 class="item-title">Severance</h3>
+                    <div class="item-meta">
+                        <span class="match-percent">95% Match</span>
+                        <span>1 Season</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Audio Description</a>
+            <a href="#">Help Center</a>
+            <a href="#">Gift Cards</a>
+            <a href="#">Media Center</a>
+            <a href="#">Investor Relations</a>
+            <a href="#">Jobs</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy</a>
+            <a href="#">Legal Notices</a>
+            <a href="#">Cookie Preferences</a>
+            <a href="#">Corporate Information</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Rex Got Pro, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Content row scrolling
+        document.querySelectorAll('.content-row').forEach(row => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            row.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - row.offsetLeft;
+                scrollLeft = row.scrollLeft;
+                row.style.cursor = 'grabbing';
+            });
+
+            row.addEventListener('mouseleave', () => {
+                isDown = false;
+                row.style.cursor = 'grab';
+            });
+
+            row.addEventListener('mouseup', () => {
+                isDown = false;
+                row.style.cursor = 'grab';
+            });
+
+            row.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - row.offsetLeft;
+                const walk = (x - startX) * 2;
+                row.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+        // Button hover effects
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'scale(1.05)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>

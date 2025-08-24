@@ -1,0 +1,87 @@
+.load {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --color1: #144560;
+    --color2: #AACB99;
+}
+
+.box1 {
+    width: 3.75em;
+    aspect-ratio: 1;
+    position: relative;
+    animation: spin 10000ms infinite linear;
+}
+
+.box1::before,
+.box1::after {
+    content: "";
+    position: absolute;
+    background: var(--color1);
+    animation: squeeze 3000ms infinite;
+}
+
+.box2 {
+    width: 3.75em;
+    aspect-ratio: 2;
+    position: relative;
+    animation: spin 10000ms infinite linear;
+}
+
+.box1::before,
+.box1::after {
+    content: "";
+    position: absolute;
+    background: var(--color2);
+    animation: squeeze 3000ms infinite;
+}
+
+.box3 {
+    background: var(--color1);
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+}
+
+.box4 {
+    background: var(--color1);
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(-180deg);
+    }
+}
+
+@keyframes squeeze {
+    0% {
+        inset: 0 2em 2em 0;
+    }
+    12.5% {
+        inset: 0 2em 0 0;
+    }
+    25% {
+        inset: 2em 2em 0 0;
+    }
+    37.5% {
+        inset: 2em 0 0 0;
+    }
+    50% {
+        inset: 2em 0 0 2em;
+    }
+    62.50% {
+        inset: 0 0 0 2em;
+    }
+    75% {
+        inset: 0 0 2em 2em;
+    }
+    87.5% {
+        inset: 0 0 2em 0;
+    }
+    100% {
+        inset: 0 2em 2em 0;
+    }
+}

@@ -1,0 +1,44 @@
+.show {
+    display: block;
+    margin: 13px;
+}
+
+.place-content {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+}
+
+.place-content:hover .li-place {
+    display: block;
+    border-radius: 2px;
+}
+
+.li-place {
+    display: none;
+    position: absolute;
+    width: 120px;
+    color: white;
+    font-size: 10px;
+    border-radius: 2px;
+}
+
+.li-place a {
+    display: block;
+    color: rgb(0, 216, 4);
+    text-align: center;
+    text-decoration: none;
+}
+
+.li-place a:hover {
+    color: orangered;
+}
+
+.category select {
+    /* background-color: darkred; */
+    border: 1px solid transparent;
+    border-color: transparent transparent none transparent;
+    user-select: none;
+    position: absolute;
+    content: "";
+}

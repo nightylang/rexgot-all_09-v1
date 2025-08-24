@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="alternate" hreflang="x-default" href="https://rexgotpro.com/">
+    <link rel="alternate" hreflang="kh" href="https://rexgotpro.com/kh/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="icon/x-image" href="asset/images/logo/logoyato.png">
+    <title>Yato Supercars</title>
+    <meta name="description" content="website public all everytings">
+    <meta name="keywords" content="rexgotpro, langsrunjs, sothean, virakboth, both, thean, rexgot, yatosupercars, yato, supercarsyato">
+    <meta property="og:url" content="https://rexgotpro.com">
+    <meta property="og:site_name" content="rexgotpro.com">
+    <meta property="og:title" content="supercar collection">
+    <meta property="og:description" content="best site for you.">
+    <meta property="og:type" content="website">
+    <!-- <meta property="og:image" content="https://rexgotpro.com/asset/images/logo/logoyato.png"> -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <base href="https://rexgotpro.com">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            padding-top: 70px;
+            /* Added padding to account for fixed header */
+        }
+        /* Red Header with Navigation */
+        
+        header {
+            background-color: #ff0000;
+            /* Red background */
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            /* Make header fixed */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            /* Smooth transition for scroll effect */
+        }
+        
+        header.scrolled {
+            background-color: rgba(255, 0, 0, 0.95);
+            /* Slightly transparent when scrolled */
+            padding: 10px 0;
+            /* Reduce padding when scrolled */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            /* Enhanced shadow when scrolled */
+        }
+        
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled .logo {
+            font-size: 24px;
+            /* Slightly smaller when scrolled */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-right: 30px;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            /* White text */
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        header.scrolled nav a {
+            font-size: 16px;
+            /* Slightly smaller when scrolled */
+        }
+        
+        nav a:hover {
+            color: #f0f0f0;
+            text-decoration: underline;
+        }
+        
+        .login-btn {
+            background-color: white;
+            color: #ff0000;
+            /* Red text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 30px;
+        }
+        
+        .login-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        /* Profile Section */
+        
+        .profile-container {
+            position: relative;
+            margin-right: 30px;
+            display: none;
+            /* Hidden by default */
+        }
+        
+        .profile-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .profile-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .profile-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ff9900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .profile-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #333;
+            min-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            display: none;
+            z-index: 1001;
+            overflow: hidden;
+        }
+        
+        .profile-dropdown.active {
+            display: block;
+        }
+        
+        .profile-info {
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+        
+        .profile-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .profile-email {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .profile-menu {
+            list-style: none;
+        }
+        
+        .profile-menu li {
+            border-bottom: 1px solid #444;
+        }
+        
+        .profile-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .profile-menu a {
+            display: block;
+            padding: 12px 15px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .profile-menu a:hover {
+            background-color: #444;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: none;
+            color: #ff5555;
+            width: 100%;
+            text-align: left;
+            padding: 12px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #444;
+        }
+        /* Hero Section */
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://source.unsplash.com/1600x900/?supercar') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: -70px;
+            /* Compensate for fixed header */
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* About Section */
+        
+        .about {
+            padding: 4rem 3rem;
+            background: linear-gradient(rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.9)), url('https://source.unsplash.com/1600x900/?luxury,garage') no-repeat center center/cover;
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ff9900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+            padding: 1rem;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+        
+        .about-features {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-left: 4px solid #ff0000;
+            padding: 1.5rem;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateX(45px);
+        }
+        
+        .feature-card h3 {
+            color: #ff9900;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .feature-card p {
+            color: #ccc;
+            font-size: 1rem;
+        }
+        
+        .team-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .team-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #ff9900;
+        }
+        
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            width: 200px;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff0000;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member h4 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        /* Gallery Section */
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 3rem;
+        }
+        
+        .car-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .car-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .car-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .car-info {
+            padding: 1.5rem;
+        }
+        
+        .car-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #ff9900;
+        }
+        
+        .car-specs {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .car-price {
+            font-size: 1.2rem;
+            color: #ff0000;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .buy-hint {
+            font-size: 0.9rem;
+            color: #aaa;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        /* Footer */
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(20, 20, 20, 0.9);
+            margin-top: 2rem;
+        }
+        
+        .social-icons {
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            color: #ff9900;
+        }
+        /* Modal Styles */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: #222;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #ff0000;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            animation: modalopen 0.4s;
+        }
+        
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #ff0000;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ff9900;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        
+        .submit-btn {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #ccc;
+        }
+        
+        .form-footer a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        /* Success message */
+        
+        .success-message {
+            display: none;
+            background-color: rgba(0, 128, 0, 0.2);
+            border: 1px solid #008000;
+            color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        /* Car Purchase Modal Specific Styles */
+        
+        .car-details {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(30, 30, 30, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .car-details img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .car-details-info {
+            flex: 1;
+        }
+        
+        .car-details-info h3 {
+            color: #ff9900;
+            margin-bottom: 5px;
+        }
+        
+        .car-details-info p {
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+        
+        .car-details-price {
+            font-size: 1.5rem;
+            color: #ff0000;
+            font-weight: bold;
+        }
+        /* Mobile Menu Styles */
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            margin-right: 15px;
+        }
+        
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 0, 0, 0.95);
+            z-index: 999;
+            padding: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .mobile-menu li {
+            margin: 15px 0;
+        }
+        
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu a:hover {
+            color: #f0f0f0;
+            text-decoration: underline;
+        }
+        
+        .mobile-menu .mobile-login-btn {
+            background-color: white;
+            color: #ff0000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px auto;
+            display: block;
+            width: 80%;
+            max-width: 200px;
+        }
+        
+        .mobile-menu .mobile-login-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .mobile-profile-container {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 20px;
+        }
+        
+        .mobile-profile-container.active {
+            display: block;
+        }
+        
+        .mobile-profile-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .mobile-profile-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-profile-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ff9900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .mobile-logout-btn {
+            background: none;
+            border: none;
+            color: #ff5555;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-logout-btn:hover {
+            color: #ff7777;
+            text-decoration: underline;
+        }
+        /* Models Page Styles */
+        
+        .models-page {
+            display: none;
+            background-color: #000;
+            min-height: 100vh;
+            padding-top: 70px;
+        }
+        
+        .models-page.active {
+            display: block;
+        }
+        
+        .models-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://source.unsplash.com/1600x900/?supercar,models') no-repeat center center/cover;
+        }
+        
+        .models-header h1 {
+            font-size: 3.5rem;
+            color: #ff9900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+        
+        .models-header p {
+            font-size: 1.2rem;
+            color: #ddd;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .models-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 4rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .model-card {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+        
+        .model-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.3);
+            border-color: #ff0000;
+        }
+        
+        .model-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .model-card:hover .model-image {
+            transform: scale(1.05);
+        }
+        
+        .model-info {
+            padding: 2rem;
+        }
+        
+        .model-title {
+            font-size: 2rem;
+            color: #ff9900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .model-description {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .model-specs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .spec-item {
+            text-align: center;
+        }
+        
+        .spec-value {
+            font-size: 1.5rem;
+            color: #ff0000;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .spec-label {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .model-price {
+            font-size: 1.8rem;
+            color: #ff0000;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .model-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #ff0000, #ff3333);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .model-btn:hover {
+            background: linear-gradient(45deg, #cc0000, #ff0000);
+            transform: translateY(-3px);
+        }
+        /* Back button */
+        
+        .back-btn {
+            position: fixed;
+            top: 90px;
+            left: 30px;
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 100;
+            transition: all 0.3s ease;
+            display: none;
+        }
+        
+        .models-page.active .back-btn {
+            display: block;
+        }
+        
+        .back-btn:hover {
+            background-color: #ff0000;
+            transform: translateX(-5px);
+        }
+        /* Media Queries */
+        
+        @media screen and (max-width: 500px) {
+            nav {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .logo {
+                margin-left: 15px;
+                font-size: 24px;
+            }
+            .login-btn {
+                display: none;
+            }
+            .profile-container {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            .about {
+                padding: 2rem 1rem;
+            }
+            .about h2 {
+                font-size: 2rem;
+            }
+            .gallery {
+                padding: 1rem;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .models-gallery {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            .models-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <script>
+        window.cdnUrl = 'https://rexgotpro.com';
+    </script>
+</head>
+
+<body>
+    <!-- Red Header with Navigation -->
+    <header id="main-header">
+        <div class="logo">YATO SUPERCARS</div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#" id="modelsLink">models</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#" id="contactLink">Contact</a></li>
+            </ul>
+        </nav>
+
+        <button class="login-btn" id="loginBtn">Login</button>
+
+        <!-- Profile Section (Hidden by default) -->
+        <div class="profile-container" id="profileContainer">
+            <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar" id="profileAvatar">U</div>
+                <span id="profileName">User</span>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="profile-info">
+                    <div class="profile-name" id="profileFullName">User Name</div>
+                    <div class="profile-email" id="profileEmail">user@gmail.com</div>
+                </div>
+                <ul class="profile-menu">
+                    <li><a href="#">My Profile</a></li>
+                    <li><a href="#">My Orders</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><button class="logout-btn" id="logoutBtn">Logout</button></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#" id="mobileModelsLink">Models</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#" id="mobileContactLink">Contact</a></li>
+        </ul>
+
+        <!-- Mobile Login Button -->
+        <button class="mobile-login-btn" id="mobileLoginBtn">Login</button>
+
+        <!-- Mobile Profile Section (Hidden by default) -->
+        <div class="mobile-profile-container" id="mobileProfileContainer">
+            <button class="mobile-profile-btn" id="mobileProfileBtn">
+                <div class="mobile-profile-avatar" id="mobileProfileAvatar">U</div>
+                <span id="mobileProfileName">User</span>
+            </button>
+            <button class="mobile-logout-btn" id="mobileLogoutBtn">Logout</button>
+        </div>
+    </div>
+
+    <!-- Main Content (Home Page) -->
+    <div id="mainContent">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h1>YATO SUPERCARS</h1>
+            <p class="subtitle">Experience the pinnacle of automotive engineering and design</p>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery" id="gallery">
+            <!-- Car cards remain unchanged -->
+            <div class="car-card">
+                <img src="https://cargym.com/cdn/shop/products/1gjfgogisgsipg_670x.jpg?v=1742213196" alt="Ferrari" class="car-image" data-car="Ferrari SF90 Stradale" data-price="$12,999,999" data-specs="986 HP | 0-60 mph: 2.0s">
+                <div class="car-info">
+                    <h2 class="car-title">Ferrari SF90 Stradale</h2>
+                    <div class="car-price">$12,999,999</div>
+                    <p class="car-specs">986 HP | 0-60 mph: 2.0s</p>
+                    <p>The ultimate expression of Ferrari's most advanced technology in a road car.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://imgr1.auto-motor-und-sport.de/Lamborghini-Hurac-n-STJ-F1102x620-FFFFFF-C-79f96678-2096344.jpg" alt="Lamborghini" class="car-image" data-car="Lamborghini Aventador" data-price="$5,999,999" data-specs="780 HP | 0-60 mph: 2.8s">
+                <div class="car-info">
+                    <h2 class="car-title">Lamborghini Aventador</h2>
+                    <div class="car-price">$5,999,999</div>
+                    <p class="car-specs">780 HP | 0-60 mph: 2.8s</p>
+                    <p>Raw power and aggressive styling define this Italian masterpiece.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://di-uploads-pod43.dealerinspire.com/mclarensanfrancisco/uploads/2022/04/720s.jpg" alt="McLaren" class="car-image" data-car="McLaren P1" data-price="$9,999,999" data-specs="903 HP | 0-60 mph: 2.7s">
+                <div class="car-info">
+                    <h2 class="car-title">McLaren P1</h2>
+                    <div class="car-price">$9,999,999</div>
+                    <p class="car-specs">903 HP | 0-60 mph: 2.7s</p>
+                    <p>A hybrid hypercar that blends F1 technology with road-going practicality.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://c4.wallpaperflare.com/wallpaper/880/148/996/bugatti-hypercar-chiron-super-sport-300-hd-wallpaper-preview.jpg" alt="Bugatti" class="car-image" data-car="Bugatti Chiron Super Sport" data-price="$15,999,999" data-specs="1,578 HP | 0-60 mph: 2.3s">
+                <div class="car-info">
+                    <h2 class="car-title">Bugatti Chiron Super Sport</h2>
+                    <div class="car-price">$15,999,999</div>
+                    <p class="car-specs">1,578 HP | 0-60 mph: 2.3s</p>
+                    <p>The pinnacle of automotive engineering with unparalleled speed and luxury.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://www.ilusso.com/wp-content/uploads/bottompagepic-9.jpg" alt="Porsche" class="car-image" data-car="Porsche 911 GT3 RS" data-price="$3,999,999" data-specs="518 HP | 0-60 mph: 2.7s">
+                <div class="car-info">
+                    <h2 class="car-title">Porsche 911 GT3 RS</h2>
+                    <div class="car-price">$3,999,999</div>
+                    <p class="car-specs">518 HP | 0-60 mph: 2.7s</p>
+                    <p>Track-focused precision engineering with everyday usability.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.pTkJpUeD4IxcZYhQzS2JcgHaEK?w=1781&h=1001&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Aston Martin" class="car-image" data-car="Aston Martin DB11" data-price="$4,999,999" data-specs="630 HP | 0-60 mph: 3.7s">
+                <div class="car-info">
+                    <h2 class="car-title">Aston Martin DB11</h2>
+                    <div class="car-price">$4,999,999</div>
+                    <p class="car-specs">630 HP | 0-60 mph: 3.7s</p>
+                    <p>British elegance combined with formidable performance.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://th.bing.com/th/id/R.610480a41a120a7da8ef0d005d1b2aa4?rik=tOVo%2fgthhQ6GYA&pid=ImgRaw&r=0" alt="Koenigsegg" class="car-image" data-car="Koenigsegg Jesko" data-price="$18,999,999" data-specs="1,600 HP | 0-60 mph: 2.5s">
+                <div class="car-info">
+                    <h2 class="car-title">Koenigsegg Jesko</h2>
+                    <div class="car-price">$18,999,999</div>
+                    <p class="car-specs">1,600 HP | 0-60 mph: 2.5s</p>
+                    <p>A Swedish hypercar designed to break speed records.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.bfJsS5Ds9QgiQUVtsDFPpQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pagani" class="car-image" data-car="Pagani Huayra R" data-price="$8,999,999" data-specs="838 HP | 0-60 mph: 2.3s">
+                <div class="car-info">
+                    <h2 class="car-title">Pagani Huayra R</h2>
+                    <div class="car-price">$8,999,999</div>
+                    <p class="car-specs">838 HP | 0-60 mph: 2.3s</p>
+                    <p>Italian artistry meets extreme performance in this track-only masterpiece.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.OkVdgFUZ-E53FBY_iMrW7gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Ford" class="car-image" data-car="Ford GT" data-price="$7,999,999" data-specs="660 HP | 0-60 mph: 2.8s">
+                <div class="car-info">
+                    <h2 class="car-title">Ford GT</h2>
+                    <div class="car-price">$7,999,999</div>
+                    <p class="car-specs">660 HP | 0-60 mph: 2.8s</p>
+                    <p>An American icon reimagined with cutting-edge technology.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.KUHMzk9X2OtGu4zGSS8CpAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Mercedes" class="car-image" data-car="Mercedes-AMG GT R" data-price="$3,499,999" data-specs="585 HP | 0-60 mph: 3.5s">
+                <div class="car-info">
+                    <h2 class="car-title">Mercedes-AMG GT R</h2>
+                    <div class="car-price">$3,499,999</div>
+                    <p class="car-specs">585 HP | 0-60 mph: 3.5s</p>
+                    <p>German engineering excellence with a focus on performance.</p>
+                    <p class="buy-hint">Click on the image to purchase</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2023 Supercar Collection. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/sothean.khot">facebook</a>
+                <a href="#">IG</a>
+                <a href="#">TW</a><br>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Models Page -->
+    <div class="models-page" id="modelsPage">
+        <a href="#" class="back-btn" id="backBtn">← Back to Home</a>
+
+        <div class="models-header">
+            <h1>Our Supercar Models</h1>
+            <p>Explore our exclusive collection of the world's most prestigious supercars and hypercars</p>
+        </div>
+
+        <div class="models-gallery">
+            <div class="model-card">
+                <img src="https://cargym.com/cdn/shop/products/1gjfgogisgsipg_670x.jpg?v=1742213196" alt="Ferrari SF90 Stradale" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Ferrari SF90 Stradale</h3>
+                    <p class="model-description">The ultimate expression of Ferrari's most advanced technology in a road car, combining hybrid power with stunning design.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">986</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.0s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">211</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$12,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://imgr1.auto-motor-und-sport.de/Lamborghini-Hurac-n-STJ-F1102x620-FFFFFF-C-79f96678-2096344.jpg" alt="Lamborghini Aventador" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Lamborghini Aventador</h3>
+                    <p class="model-description">Raw power and aggressive styling define this Italian masterpiece, featuring the iconic V12 engine and scissor doors.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">780</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.8s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">217</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$5,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://di-uploads-pod43.dealerinspire.com/mclarensanfrancisco/uploads/2022/04/720s.jpg" alt="McLaren P1" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">McLaren P1</h3>
+                    <p class="model-description">A hybrid hypercar that blends F1 technology with road-going practicality, representing the pinnacle of British engineering.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">903</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.7s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">217</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$9,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://c4.wallpaperflare.com/wallpaper/880/148/996/bugatti-hypercar-chiron-super-sport-300-hd-wallpaper-preview.jpg" alt="Bugatti Chiron Super Sport" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Bugatti Chiron Super Sport</h3>
+                    <p class="model-description">The pinnacle of automotive engineering with unparalleled speed and luxury, featuring an 8.0L W16 quad-turbocharged engine.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">1,578</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.3s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">304</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$15,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://www.ilusso.com/wp-content/uploads/bottompagepic-9.jpg" alt="Porsche 911 GT3 RS" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Porsche 911 GT3 RS</h3>
+                    <p class="model-description">Track-focused precision engineering with everyday usability, featuring a naturally aspirated flat-six engine and aerodynamic design.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">518</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.7s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">184</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$3,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.pTkJpUeD4IxcZYhQzS2JcgHaEK?w=1781&h=1001&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Aston Martin DB11" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Aston Martin DB11</h3>
+                    <p class="model-description">British elegance combined with formidable performance, featuring a twin-turbo V12 engine and handcrafted interior.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">630</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">3.7s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">208</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$4,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://th.bing.com/th/id/R.610480a41a120a7da8ef0d005d1b2aa4?rik=tOVo%2fgthhQ6GYA&pid=ImgRaw&r=0" alt="Koenigsegg Jesko" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Koenigsegg Jesko</h3>
+                    <p class="model-description">A Swedish hypercar designed to break speed records, featuring a twin-turbo V8 engine that produces 1,600 horsepower on E85 biofuel.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">1,600</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.5s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">330</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$18,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.bfJsS5Ds9QgiQUVtsDFPpQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pagani Huayra R" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Pagani Huayra R</h3>
+                    <p class="model-description">Italian artistry meets extreme performance in this track-only masterpiece, featuring a naturally aspirated V12 engine and carbon fiber construction.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">838</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.3s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">238</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$8,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.OkVdgFUZ-E53FBY_iMrW7gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Ford GT" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Ford GT</h3>
+                    <p class="model-description">An American icon reimagined with cutting-edge technology, featuring a carbon fiber body and twin-turbo EcoBoost V6 engine.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">660</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.8s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">216</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$7,999,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.KUHMzk9X2OtGu4zGSS8CpAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Mercedes-AMG GT R" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Mercedes-AMG GT R</h3>
+                    <p class="model-description">German engineering excellence with a focus on performance, featuring a handcrafted V8 biturbo engine and advanced aerodynamics.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">585</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">3.5s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">198</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$3,499,999</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://www.topcarrating.com/koenigsegg/2020-koenigsegg-gemera.jpg" alt="Koenigsegg Gemera" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Koenigsegg Gemera</h3>
+                    <p class="model-description">The world's first Mega-GT, combining four-seat comfort with hypercar performance through innovative hybrid technology.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">1,700</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">1.9s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">248</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$1,700,000</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://www.topcarrating.com/rimac/2021-rimac-nevera.jpg" alt="Rimac Nevera" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Rimac Nevera</h3>
+                    <p class="model-description">Croatian electric hypercar that redefines performance with four electric motors producing instant torque and mind-bending acceleration.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">1,914</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">1.85s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">258</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$2,400,000</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://www.topcarrating.com/lotus/2021-lotus-evija.jpg" alt="Lotus Evija" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Lotus Evija</h3>
+                    <p class="model-description">British all-electric hypercar with stunning design and revolutionary aerodynamics, representing Lotus's return to hypercar manufacturing.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">1,972</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">3.0s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">200</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$2,100,000</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://www.topcarrating.com/pininfarina/2020-battista.jpg" alt="Pininfarina Battista" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Pininfarina Battista</h3>
+                    <p class="model-description">Italian design house's first production car, an electric hypercar that combines breathtaking aesthetics with extraordinary performance.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">1,874</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.0s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">217</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$2,200,000</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://www.topcarrating.com/hennessey/2021-hennessey-venom-f5.jpg" alt="Hennessey Venom F5" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Hennessey Venom F5</h3>
+                    <p class="model-description">American-built hypercar designed specifically to achieve speeds exceeding 300 mph, featuring a custom-built V8 engine.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">1,817</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.6s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">311</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$1,800,000</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://www.topcarrating.com/apollo/2020-apollo-ie.jpg" alt="Apollo IE" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Apollo IE</h3>
+                    <p class="model-description">German engineering meets Italian design in this limited-edition hypercar, featuring a naturally aspirated V12 engine and extreme aerodynamics.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">780</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.7s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">208</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$2,300,000</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://www.topcarrating.com/zenvo/2020-zenvo-tsr-s.jpg" alt="Zenvo TSR-S" class="model-image">
+                <div class="model-info">
+                    <h3 class="model-title">Zenvo TSR-S</h3>
+                    <p class="model-description">Danish hypercar featuring a unique centrifugal supercharger and twin-scroll turbocharger system, with innovative active aerodynamics.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-value">1,177</span>
+                            <span class="spec-label">Horsepower</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">2.8s</span>
+                            <span class="spec-label">0-60 mph</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">202</span>
+                            <span class="spec-label">Top Speed (mph)</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$1,900,000</div>
+                    <button class="model-btn">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About YATO Supercars</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Founded in 2010, YATO Supercars has established itself as the premier destination for automotive enthusiasts seeking the most exclusive and high-performance vehicles in the world. Our passion for excellence drives us to curate an unparalleled
+                    collection of the world's most sought-after supercars and hypercars.</p>
+                <p>At YATO Supercars, we don't just sell cars; we deliver experiences. Each vehicle in our collection represents the pinnacle of automotive engineering, design, and performance. Our team of experts meticulously selects each car based on its
+                    rarity, condition, and provenance, ensuring our clients receive nothing but the absolute best.</p>
+                <p>With showrooms in major cities around the globe and a commitment to white-glove service, YATO Supercars is dedicated to making your dream of owning a piece of automotive history a reality.</p>
+            </div>
+            <div class="about-features">
+                <div class="feature-card">
+                    <h3>Exclusive Collection</h3>
+                    <p>Access to the world's rarest and most desirable supercars, with many models available by invitation only.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Expert Curation</h3>
+                    <p>Our team of automotive specialists ensures every vehicle meets our exacting standards for quality and authenticity.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Global Presence</h3>
+                    <p>With showrooms in key markets worldwide, we provide a seamless experience for our international clientele.</p>
+                </div>
+            </div>
+        </div>
+        <div class="team-section">
+            <h3>Our Leadership Team</h3>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="asset/images/imgteam/11.jpg" alt="CEO">
+                    <h4>Yato</h4>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="asset/images/imgteam/uuu.jpg" alt="COO">
+                    <a href="rexgot.html" style="text-decoration: none;">
+                        <h4>Sive Eleang</h4>
+                    </a>
+                    <p>Chief Operating Officer</p>
+                </div>
+                <div class="team-member">
+                    <img src="asset/images/imgteam/fk.jpg" alt="Head of Curation">
+                    <h4>Virak Both</h4>
+                    <p>Head of Curation</p>
+                </div>
+                <div class="team-member">
+                    <img src="asset/images/imgteam/tt.jpg" alt="Client Relations">
+                    <h4>Van Channy</h4>
+                    <p>Director of Client Relations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 20px; color: #ff9900;">Login to YATO SUPERCARS</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#">Sign up</a></p>
+                    <p><a href="#">Forgot password?</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Car Purchase Modal -->
+    <div id="carPurchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 20px; color: #ff9900;">Purchase Your Supercar</h2>
+            <div class="success-message" id="purchaseSuccess">
+                Thank you for your purchase! Our team will contact you shortly to finalize the details.
+            </div>
+            <div class="car-details" id="carDetails">
+                <!-- Car details will be populated here dynamically -->
+            </div>
+            <form id="purchaseForm">
+                <div class="form-group">
+                    <label for="buyerName">Full Name</label>
+                    <input type="text" id="buyerName" name="buyerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="buyerEmail">Email Address</label>
+                    <input type="email" id="buyerEmail" name="buyerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="buyerPhone">Phone Number</label>
+                    <input type="tel" id="buyerPhone" name="buyerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="buyerLocation">Location</label>
+                    <input type="text" id="buyerLocation" name="buyerLocation" placeholder="City, Country" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Preferred Payment Method</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Select a payment method</option>
+                        <option value="bank">Bank Transfer</option>
+                        <option value="crypto">Cryptocurrency</option>
+                        <option value="financing">Financing Options</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="additionalNotes">Additional Notes</label>
+                    <textarea id="additionalNotes" name="additionalNotes" placeholder="Any special requests or questions..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 20px; color: #ff9900;">Contact YATO SUPERCARS</h2>
+            <div class="success-message" id="contactSuccess">
+                Thank you for your message! We'll get back to you soon.
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Get the login modal
+        const loginModal = document.getElementById("loginModal");
+
+        // Get the contact modal
+        const contactModal = document.getElementById("contactModal");
+
+        // Get the car purchase modal
+        const carPurchaseModal = document.getElementById("carPurchaseModal");
+
+        // Get the button that opens the login modal
+        const loginBtn = document.getElementById("loginBtn");
+        const mobileLoginBtn = document.getElementById("mobileLoginBtn");
+
+        // Get the link that opens the contact modal
+        const contactLink = document.getElementById("contactLink");
+        const mobileContactLink = document.getElementById("mobileContactLink");
+
+        // Get models page elements
+        const modelsLink = document.getElementById("modelsLink");
+        const mobileModelsLink = document.getElementById("mobileModelsLink");
+        const modelsPage = document.getElementById("modelsPage");
+        const mainContent = document.getElementById("mainContent");
+        const backBtn = document.getElementById("backBtn");
+
+        // Get profile elements
+        const profileContainer = document.getElementById("profileContainer");
+        const profileBtn = document.getElementById("profileBtn");
+        const profileDropdown = document.getElementById("profileDropdown");
+        const profileAvatar = document.getElementById("profileAvatar");
+        const profileName = document.getElementById("profileName");
+        const profileFullName = document.getElementById("profileFullName");
+        const profileEmail = document.getElementById("profileEmail");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        // Get mobile profile elements
+        const mobileProfileContainer = document.getElementById("mobileProfileContainer");
+        const mobileProfileAvatar = document.getElementById("mobileProfileAvatar");
+        const mobileProfileName = document.getElementById("mobileProfileName");
+        const mobileLogoutBtn = document.getElementById("mobileLogoutBtn");
+
+        // Get the <span> elements that close the modals
+        const closeBtns = document.getElementsByClassName("close");
+
+        // Mobile menu elements
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        // When the user clicks the login button, open the login modal 
+        loginBtn.onclick = function() {
+            loginModal.style.display = "block";
+        }
+
+        mobileLoginBtn.onclick = function() {
+            loginModal.style.display = "block";
+            mobileMenu.classList.remove("active");
+            mobileMenuBtn.classList.remove("active");
+        }
+
+        // When the user clicks the contact link, open the contact modal
+        contactLink.onclick = function(e) {
+            e.preventDefault();
+            contactModal.style.display = "block";
+        }
+
+        mobileContactLink.onclick = function(e) {
+            e.preventDefault();
+            contactModal.style.display = "block";
+            mobileMenu.classList.remove("active");
+            mobileMenuBtn.classList.remove("active");
+        }
+
+        // When the user clicks the models link, show the models page
+        modelsLink.onclick = function(e) {
+            e.preventDefault();
+            mainContent.style.display = "none";
+            modelsPage.classList.add("active");
+            window.scrollTo(0, 0);
+        }
+
+        mobileModelsLink.onclick = function(e) {
+            e.preventDefault();
+            mainContent.style.display = "none";
+            modelsPage.classList.add("active");
+            mobileMenu.classList.remove("active");
+            mobileMenuBtn.classList.remove("active");
+            window.scrollTo(0, 0);
+        }
+
+        // When the user clicks the back button, show the main content
+        backBtn.onclick = function(e) {
+            e.preventDefault();
+            modelsPage.classList.remove("active");
+            mainContent.style.display = "block";
+            window.scrollTo(0, 0);
+        }
+
+        // Profile dropdown toggle
+        profileBtn.onclick = function() {
+            profileDropdown.classList.toggle("active");
+        }
+
+        // Close profile dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.profile-btn') && !event.target.closest('.profile-dropdown')) {
+                if (profileDropdown.classList.contains('active')) {
+                    profileDropdown.classList.remove('active');
+                }
+            }
+        }
+
+        // Logout functionality
+        logoutBtn.onclick = function() {
+            // Hide profile section
+            profileContainer.style.display = "none";
+            mobileProfileContainer.classList.remove("active");
+
+            // Show login button
+            loginBtn.style.display = "block";
+            mobileLoginBtn.style.display = "block";
+
+            // Clear any stored user data
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('userData');
+        }
+
+        // Mobile logout functionality
+        mobileLogoutBtn.onclick = function() {
+            // Hide profile section
+            profileContainer.style.display = "none";
+            mobileProfileContainer.classList.remove("active");
+
+            // Show login button
+            loginBtn.style.display = "block";
+            mobileLoginBtn.style.display = "block";
+
+            // Clear any stored user data
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('userData');
+        }
+
+        // When the user clicks on any <span> (x), close the corresponding modal
+        for (let i = 0; i < closeBtns.length; i++) {
+            closeBtns[i].onclick = function() {
+                if (this.closest("#loginModal")) {
+                    loginModal.style.display = "none";
+                } else if (this.closest("#contactModal")) {
+                    contactModal.style.display = "none";
+                    document.getElementById("contactSuccess").style.display = "none";
+                } else if (this.closest("#carPurchaseModal")) {
+                    carPurchaseModal.style.display = "none";
+                    document.getElementById("purchaseSuccess").style.display = "none";
+                }
+            }
+        }
+
+        // When the user clicks anywhere outside of a modal, close it
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = "none";
+            } else if (event.target == contactModal) {
+                contactModal.style.display = "none";
+                document.getElementById("contactSuccess").style.display = "none";
+            } else if (event.target == carPurchaseModal) {
+                carPurchaseModal.style.display = "none";
+                document.getElementById("purchaseSuccess").style.display = "none";
+            }
+        }
+
+        // Mobile menu toggle
+        mobileMenuBtn.onclick = function() {
+            mobileMenu.classList.toggle("active");
+            mobileMenuBtn.classList.toggle("active");
+        }
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove("active");
+                mobileMenuBtn.classList.remove("active");
+            });
+        });
+
+        // Handle login form submission
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Simulate login success
+            // In a real application, you would validate credentials with a server
+
+            // Create user data object
+            const userData = {
+                username: username,
+                email: username.includes('@') ? username : `${username}@example.com`,
+                fullName: username.charAt(0).toUpperCase() + username.slice(1) + " User"
+            };
+
+            // Store user data in localStorage
+            localStorage.setItem('userLoggedIn', 'true');
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            // Update profile UI
+            updateProfileUI(userData);
+
+            // Hide login button and show profile
+            loginBtn.style.display = "none";
+            mobileLoginBtn.style.display = "none";
+            profileContainer.style.display = "block";
+            mobileProfileContainer.classList.add("active");
+
+            // Close the modal
+            loginModal.style.display = "none";
+
+            // Reset the form
+            this.reset();
+        });
+
+        // Function to update profile UI
+        function updateProfileUI(userData) {
+            // Update profile elements
+            profileName.textContent = userData.username;
+            profileFullName.textContent = userData.fullName;
+            profileEmail.textContent = userData.email;
+
+            // Update avatar with first letter of username
+            profileAvatar.textContent = userData.username.charAt(0).toUpperCase();
+
+            // Update mobile profile elements
+            mobileProfileName.textContent = userData.username;
+            mobileProfileAvatar.textContent = userData.username.charAt(0).toUpperCase();
+        }
+
+        // Check if user is already logged in on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const userLoggedIn = localStorage.getItem('userLoggedIn');
+            if (userLoggedIn === 'true') {
+                const userData = JSON.parse(localStorage.getItem('userData'));
+                if (userData) {
+                    updateProfileUI(userData);
+                    loginBtn.style.display = "none";
+                    mobileLoginBtn.style.display = "none";
+                    profileContainer.style.display = "block";
+                    mobileProfileContainer.classList.add("active");
+                }
+            }
+        });
+
+        // Handle contact form submission
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+
+            // Here you would typically send the contact data to a server
+            // For this example, we'll just show a success message
+            console.log({
+                name: name,
+                email: email,
+                phone: phone,
+                subject: subject,
+                message: message
+            });
+
+            // Show success message
+            document.getElementById("contactSuccess").style.display = "block";
+
+            // Reset the form
+            this.reset();
+
+            // Optional: Close the modal after a delay
+            setTimeout(function() {
+                contactModal.style.display = "none";
+                document.getElementById("contactSuccess").style.display = "none";
+            }, 3000);
+        });
+
+        // Handle car image clicks to open purchase modal
+        document.querySelectorAll('.car-image').forEach(image => {
+            image.addEventListener('click', function() {
+                const carName = this.getAttribute('data-car');
+                const carPrice = this.getAttribute('data-price');
+                const carSpecs = this.getAttribute('data-specs');
+                const carImageSrc = this.getAttribute('src');
+
+                // Populate car details in the modal
+                const carDetailsDiv = document.getElementById('carDetails');
+                carDetailsDiv.innerHTML = `
+                    <img src="${carImageSrc}" alt="${carName}">
+                    <div class="car-details-info">
+                        <h3>${carName}</h3>
+                        <p>${carSpecs}</p>
+                        <div class="car-details-price">${carPrice}</div>
+                    </div>
+                `;
+
+                // Open the purchase modal
+                carPurchaseModal.style.display = "block";
+            });
+        });
+
+        // Handle purchase form submission
+        document.getElementById("purchaseForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const carName = document.querySelector('#carDetails h3').textContent;
+            const carPrice = document.querySelector('.car-details-price').textContent;
+            const buyerName = document.getElementById("buyerName").value;
+            const buyerEmail = document.getElementById("buyerEmail").value;
+            const buyerPhone = document.getElementById("buyerPhone").value;
+            const buyerLocation = document.getElementById("buyerLocation").value;
+            const paymentMethod = document.getElementById("paymentMethod").value;
+            const additionalNotes = document.getElementById("additionalNotes").value;
+
+            // Here you would typically send the purchase data to a server
+            // For this example, we'll just show a success message
+            console.log({
+                car: carName,
+                price: carPrice,
+                buyerName: buyerName,
+                buyerEmail: buyerEmail,
+                buyerPhone: buyerPhone,
+                buyerLocation: buyerLocation,
+                paymentMethod: paymentMethod,
+                additionalNotes: additionalNotes
+            });
+
+            // Show success message
+            document.getElementById("purchaseSuccess").style.display = "block";
+
+            // Reset the form
+            this.reset();
+
+            // Optional: Close the modal after a delay
+            setTimeout(function() {
+                carPurchaseModal.style.display = "none";
+                document.getElementById("purchaseSuccess").style.display = "none";
+            }, 5000);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === "#") return; // Skip contact link as it opens a modal
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Account for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Handle model card "View Details" button clicks
+        document.querySelectorAll('.model-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const modelCard = this.closest('.model-card');
+                const carName = modelCard.querySelector('.model-title').textContent;
+                const carImageSrc = modelCard.querySelector('.model-image').getAttribute('src');
+                const carPrice = modelCard.querySelector('.model-price').textContent;
+
+                // Get specs from the model card
+                const specValues = modelCard.querySelectorAll('.spec-value');
+                const horsepower = specValues[0].textContent;
+                const zeroToSixty = specValues[1].textContent;
+                const topSpeed = specValues[2].textContent;
+
+                const carSpecs = `${horsepower} HP | 0-60 mph: ${zeroToSixty} | Top Speed: ${topSpeed} mph`;
+
+                // Populate car details in the modal
+                const carDetailsDiv = document.getElementById('carDetails');
+                carDetailsDiv.innerHTML = `
+                    <img src="${carImageSrc}" alt="${carName}">
+                    <div class="car-details-info">
+                        <h3>${carName}</h3>
+                        <p>${carSpecs}</p>
+                        <div class="car-details-price">${carPrice}</div>
+                    </div>
+                `;
+
+                // Open the purchase modal
+                carPurchaseModal.style.display = "block";
+            });
+        });
+    </script>
+</body>
+
+</html>

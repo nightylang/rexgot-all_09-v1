@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Display Button</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        /* Toggle Button Styles */
+        
+        .toggle-btn {
+            position: relative;
+            display: inline-block;
+            padding: 18px 45px;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        /* Button Hover Effects */
+        
+        .toggle-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(245, 87, 108, 0.6);
+            background: linear-gradient(45deg, #f5576c 0%, #f093fb 100%);
+        }
+        
+        .toggle-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(245, 87, 108, 0.4);
+        }
+        /* Button Icon */
+        
+        .btn-icon {
+            margin-left: 10px;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        
+        .toggle-btn:hover .btn-icon {
+            transform: translateX(5px);
+        }
+        /* Content Panel */
+        
+        .content-panel {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .content-panel.active {
+            opacity: 1;
+            max-height: 1000px;
+            padding: 30px;
+        }
+        
+        .content-panel h2 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #f5576c;
+            padding-bottom: 10px;
+        }
+        
+        .content-panel p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            color: #f5576c;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        /* Responsive adjustments */
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            .toggle-btn {
+                padding: 15px 35px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Content Toggle Demo</h1>
+
+        <button class="toggle-btn" id="toggleBtn">
+            <span id="btnText">Show Content</span>
+            <span class="btn-icon" id="btnIcon">▼</span>
+        </button>
+
+        <div class="content-panel" id="contentPanel">
+            <h2>Hidden Content Revealed!</h2>
+            <p>This content was hidden initially and is now displayed. You can toggle its visibility using the button above.</p>
+
+            <h3>Key Features:</h3>
+            <ul class="feature-list">
+                <li><span class="feature-icon">✓</span> Smooth transition animations</li>
+                <li><span class="feature-icon">✓</span> Responsive design</li>
+                <li><span class="feature-icon">✓</span> Interactive button states</li>
+                <li><span class="feature-icon">✓</span> Dynamic text and icon changes</li>
+            </ul>
+
+            <p>Click the button again to hide this content. The button will update its text and icon to reflect the current state.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get DOM elements
+        const toggleBtn = document.getElementById('toggleBtn');
+        const contentPanel = document.getElementById('contentPanel');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+
+        // Set initial state
+        let isVisible = false;
+
+        // Toggle function
+        function toggleContent() {
+            isVisible = !isVisible;
+
+            if (isVisible) {
+                // Show content
+                contentPanel.classList.add('active');
+                btnText.textContent = 'Hide Content';
+                btnIcon.textContent = '▲';
+
+                // Add pulse effect to button
+                toggleBtn.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    toggleBtn.style.animation = '';
+                }, 500);
+            } else {
+                // Hide content
+                contentPanel.classList.remove('active');
+                btnText.textContent = 'Show Content';
+                btnIcon.textContent = '▼';
+            }
+        }
+
+        // Add click event listener
+        toggleBtn.addEventListener('click', toggleContent);
+
+        // Pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

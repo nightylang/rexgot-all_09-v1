@@ -1,0 +1,660 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    html,
+    body {
+        color: aliceblue;
+        background-color: black;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    header {
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    /*============================ navbar link ===============================*/
+    
+    nav ul {
+        font-size: 18px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        padding-left: 25px;
+        background-color: rgb(255, 0, 0);
+        overflow: hidden;
+    }
+    
+    nav li {
+        float: left;
+        font-size: 14px;
+    }
+    
+    nav a {
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 25px;
+        color: aliceblue;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+    }
+    
+    nav .right {
+        float: right;
+    }
+    
+    .s-right {
+        float: right;
+    }
+    
+    nav a:hover {
+        border-bottom: 1px solid white;
+        background-color: black;
+    }
+    
+    nav .forlog {
+        margin-right: 15px;
+        float: right;
+    }
+    
+    .about a {
+        display: block;
+    }
+    
+    .contentab {
+        display: none;
+        position: absolute;
+        min-width: 80px;
+        margin-left: 0;
+        padding: 0;
+        background-color: rgb(141, 0, 0);
+    }
+    
+    .about:hover .contentab {
+        display: block;
+    }
+    /*==================================================== Main content =======================================================*/
+    
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    #myBtn {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Fixed/sticky position */
+        bottom: 20px;
+        /* Place the button at the bottom of the page */
+        right: 30px;
+        /* Place the button 30px from the right */
+        z-index: 99;
+        /* Make sure it does not overlap */
+        border: none;
+        /* Remove borders */
+        outline: none;
+        /* Remove outline */
+        background-color: red;
+        /* Set a background color */
+        color: white;
+        /* Text color */
+        cursor: pointer;
+        /* Add a mouse pointer on hover */
+        padding: 15px;
+        /* Some padding */
+        border-radius: 10px;
+        /* Rounded corners */
+        font-size: 18px;
+        /* Increase font size */
+    }
+    
+    #myBtn:hover {
+        background-color: #555;
+        /* Add a dark-grey background on hover */
+    }
+    
+    content1 .wrapper1 {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 16rem;
+        justify-content: stretch;
+        animation: animate 10s linear infinite;
+    }
+    
+    .wrapper1 img {
+        width: 200px;
+        height: 300px;
+    }
+    
+    @keyframes animate {
+        to {
+            translate: calc(-14 * 10rem);
+        }
+    }
+    /*========================== aside content ========================*/
+    
+    aside {
+        margin: 0;
+        width: 12%;
+        float: left;
+        padding: 10px;
+        margin-left: 5px;
+        font-size: 12px;
+    }
+    
+    aside .Aside ul li {
+        cursor: pointer;
+    }
+    
+    .Aside li {
+        font-size: 10px;
+        padding: 10px;
+        padding-left: 10px;
+        padding-right: 25px;
+    }
+    
+    .tabcontent {
+        top: 0;
+        cursor: pointer;
+    }
+    /*===================== section content====================*/
+    
+    section {
+        width: 58%;
+        float: left;
+        padding: 10px;
+    }
+    
+    table,
+    th,
+    td {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid white;
+        border-collapse: collapse;
+    }
+    
+    table th {
+        text-align: left;
+        background-color: cornflowerblue;
+    }
+    
+    .Porfile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .p-left {
+        padding-top: 10px;
+        width: 50%;
+    }
+    
+    .p-right {
+        padding-top: 10px;
+        width: 50%;
+    }
+    /*====================== article content ====================================*/
+    
+    article {
+        display: none;
+        width: 30%;
+        float: right;
+        padding: 10px;
+    }
+    /*====================== closing content =====================*/
+    /*====================== content about us ======================*/
+    
+    content {
+        width: 100%;
+    }
+    
+    content h2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .column {
+        display: flex;
+        justify-content: center;
+        width: 33.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+    
+    .card {
+        background-color: #2d00aa;
+        width: 250px;
+        height: 510px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+    }
+    
+    .card img {
+        width: 190px;
+        height: 400px;
+    }
+    
+    .about-section {
+        justify-content: center;
+        padding: 50px;
+        text-align: center;
+        background-color: #800000;
+        color: white;
+    }
+    
+    .container {
+        margin-top: 2px;
+        padding: 0 16px;
+    }
+    
+    .container h2 {
+        font-size: medium;
+    }
+    
+    .container p {
+        font-size: x-small;
+    }
+    
+    .container::after,
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    
+    .title {
+        font-size: smaller;
+        color: rgb(183, 183, 183);
+    }
+    
+    .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    .button:hover {
+        background-color: #800000;
+    }
+    /*=============== footer content =============*/
+    
+    footer {
+        display: block;
+        padding: 20px;
+        display: block;
+        clear: both;
+        text-align: center;
+        background-color: brown;
+        z-index: 1;
+    }
+    /*=====================================================================================================================*/
+    /*============================================================== media ================================================*/
+    
+    @media only screen and (max-width: 600px) {
+        html,
+        body {
+            background-color: rgb(69, 2, 169);
+        }
+        nav a {
+            text-align: center;
+        }
+        h1 {
+            font-size: medium;
+        }
+        .ishome {
+            width: 20%;
+        }
+        .ishome span {
+            font-size: x-small;
+            color: rgb(255, 51, 0);
+        }
+        main {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        aside .Aside {
+            text-align: left;
+        }
+        .Aside li {
+            font-size: smaller;
+            text-align: left;
+            list-style-type: none;
+        }
+        .Aside li:hover {
+            background-color: rgb(69, 2, 169);
+            color: black;
+        }
+        aside {
+            width: 50%;
+        }
+        aside h2 {
+            font-size: 12px;
+        }
+        section {
+            width: 100%;
+        }
+        article {
+            display: block;
+        }
+        .tabcontent {
+            padding-top: 10px;
+        }
+        .tabcontent h3 {
+            font-size: smaller;
+        }
+        .tabcontent p {
+            font-size: x-small;
+        }
+        .column {
+            width: 100%;
+            display: block;
+        }
+        .card {
+            background-color: #2d00aa;
+            width: 120px;
+            height: 250px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 2px;
+        }
+        .card img {
+            width: 60px;
+            height: 150px;
+        }
+        .container {
+            margin-top: 0px;
+            padding: 0 12px;
+        }
+        .container h2 {
+            font-size: x-small;
+        }
+        .container p {
+            font-size: 6px;
+        }
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            margin-top: 4px;
+            padding: 8px;
+            font-size: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+        .wrapper1 img {
+            width: 60px;
+            height: 100px;
+        }
+        content1 .wrapper1 {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 4rem;
+            justify-content: stretch;
+            animation: animate 10s linear infinite;
+        }
+        @keyframes animate {
+            to {
+                translate: calc(-2 * 2rem);
+            }
+        }
+    }
+    
+    @media only screen and (min-width: 600px) {
+        html,
+        body {
+            background-color: black;
+        }
+        h1 {
+            font-size: medium;
+        }
+        .ishome {
+            width: 20%;
+        }
+        .ishome span {
+            font-size: x-small;
+            color: rgb(255, 51, 0);
+        }
+        main {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        aside {
+            border-right: 1px solid #FFF;
+            width: 15%;
+            height: 50vh;
+        }
+        aside h2 {
+            font-size: 10px;
+        }
+        aside .Aside {
+            text-align: left;
+        }
+        .Aside li {
+            font-size: smaller;
+            text-align: left;
+            list-style-type: none;
+        }
+        article {
+            font-size: smaller;
+            border-left: 1px solid #FFF;
+            padding: 5px;
+            width: 27%;
+            height: 50vh;
+        }
+        article p {
+            font-size: smaller;
+        }
+    }
+    
+    @media only screen and (min-width: 768px) {
+        html,
+        body {
+            background-color: rgb(255, 101, 0);
+        }
+        h1 {
+            font-size: larger;
+        }
+        .ishome {
+            width: 20%;
+        }
+        .ishome span {
+            font-size: small;
+            color: rgb(255, 0, 0);
+        }
+        main {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        aside {
+            border-right: 1px solid #FFF;
+            width: 15%;
+            height: 50vh;
+        }
+        aside h2 {
+            font-size: small;
+        }
+        .Aside li {
+            font-size: smaller;
+            text-align: center;
+            list-style-type: none;
+        }
+        .Aside li:hover {
+            background-color: #FFF;
+            color: black;
+        }
+        section {
+            width: 75%;
+        }
+        article {
+            width: 27%;
+        }
+        article p {
+            font-size: smaller;
+        }
+    }
+    
+    @media only screen and (min-width: 992px) {
+        html,
+        body {
+            background-color: rgb(87, 0, 0);
+        }
+        h1 {
+            font-size: larger;
+        }
+        .ishome span {
+            color: red;
+        }
+        .ishome {
+            width: 20%;
+        }
+        .ishome span {
+            font-size: x-small;
+            color: rgb(255, 51, 0);
+        }
+        main {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        aside {
+            border-right: 1px solid #FFF;
+            width: 15%;
+            height: 50vh;
+        }
+        aside h2 {
+            font-size: larger;
+        }
+        .Aside li {
+            font-size: 12px;
+            text-align: center;
+            list-style-type: none;
+        }
+        .Aside li:hover {
+            background-color: #FFF;
+            color: black;
+        }
+        section {
+            width: 75%;
+        }
+        article {
+            width: 27%;
+        }
+    }
+    
+    @media only screen and (min-width: 1200px) {
+        html,
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+        h1 {
+            font-size: 30px;
+        }
+        .ishome span {
+            color: rgb(255, 255, 255);
+        }
+        .ishome {
+            width: 10%;
+        }
+        .ishome span {
+            font-size: medium;
+            color: rgb(255, 51, 0);
+        }
+        main {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        aside {
+            border-right: 1px solid #FFF;
+            width: 15%;
+            height: 50vh;
+        }
+        aside h2 {
+            font-size: medium;
+        }
+        .Aside li {
+            font-size: 12px;
+            text-align: center;
+            list-style-type: none;
+        }
+        .Aside li:hover {
+            background-color: #FFF;
+            color: black;
+        }
+        section {
+            width: 75%;
+        }
+        article {
+            width: 27%;
+        }
+        .tabcontent h3 {
+            font-size: small;
+        }
+        .tabcontent p {
+            font-size: x-small;
+        }
+        .card {
+            background-color: #2d00aa;
+            width: 250px;
+            height: 450px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 2px;
+        }
+        .card img {
+            justify-content: stretch;
+            width: 250px;
+            height: 320px;
+        }
+        .container {
+            margin-top: 0px;
+            padding: 0 12px;
+        }
+        .container h2 {
+            font-size: medium;
+        }
+        .container p {
+            font-size: 10px;
+        }
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            margin-top: 4px;
+            padding: 8px;
+            font-size: 15px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+    }

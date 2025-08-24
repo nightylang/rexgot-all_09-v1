@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG to PNG Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dropzone {
+            border: 2px dashed #9ca3af;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .dropzone.drag-over {
+            border-color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        
+        .dropzone.error {
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.05);
+        }
+        
+        .preview-container {
+            max-width: 100%;
+            max-height: 400px;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h10v10H0zM10 10h10v10H10z' fill='%23f3f4f6'/%3E%3C/svg%3E");
+            position: relative;
+        }
+        
+        .preview-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+            border-radius: inherit;
+        }
+        
+        .download-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .download-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">SVG to PNG Converter</h1>
+
+            <div class="mb-8">
+                <img src="https://placehold.co/600x300" alt="Illustration of a vector image being converted to raster format with arrow pointing to PNG file" class="mx-auto rounded-lg shadow-sm mb-4" />
+                <p class="text-gray-600 text-center">Convert your SVG files to high-quality PNG images with precise control over the output.</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Dropzone Section -->
+                <div id="dropzone" class="dropzone p-8 text-center cursor-pointer">
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <h2 class="text-xl font-semibold text-gray-700">Drag & Drop SVG File Here</h2>
+                        <p class="text-gray-500">or click to browse your files</p>
+                        <input type="file" id="fileInput" class="hidden" accept=".svg,image/svg+xml" />
+                        <button id="browseBtn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Select File
+                        </button>
+                    </div>
+                    <p id="dropzoneError" class="error-message hidden mt-2"></p>
+                </div>
+
+                <!-- Options Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="width" class="block text-sm font-medium text-gray-700 mb-1">Width (pixels)</label>
+                        <input type="number" id="width" min="1" value="1024" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        <p id="widthError" class="error-message hidden">Please enter a valid width</p>
+                    </div>
+                    <div>
+                        <label for="height" class="block text-sm font-medium text-gray-700 mb-1">Height (pixels)</label>
+                        <input type="number" id="height" min="1" value="768" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        <p id="heightError" class="error-message hidden">Please enter a valid height</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="keepAspectRatio" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" checked>
+                                <label for="keepAspectRatio" class="ml-2 block text-sm text-gray-700">Maintain aspect ratio</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="transparentBg" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="transparentBg" class="ml-2 block text-sm text-gray-700">Transparent background</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mt-6 hidden" id="previewSection">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Preview</h3>
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1 space-y-2">
+                            <h4 class="text-sm font-medium text-gray-700">Original SVG</h4>
+                            <div class="preview-container flex items-center justify-center p-4" id="svgPreview"></div>
+                        </div>
+                        <div class="flex-1 space-y-2">
+                            <h4 class="text-sm font-medium text-gray-700">Converted PNG</h4>
+                            <div class="preview-container flex items-center justify-center p-4 relative" id="pngPreview">
+                                <div id="loadingIndicator" class="hidden absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 z-10">
+                                    <svg class="h-8 w-8 text-blue-500 spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center mt-6 space-x-4">
+                        <button id="downloadBtn" disabled class="download-btn px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                            Download PNG
+                        </button>
+                        <button id="resetBtn" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const elements = {
+                dropzone: document.getElementById('dropzone'),
+                fileInput: document.getElementById('fileInput'),
+                browseBtn: document.getElementById('browseBtn'),
+                widthInput: document.getElementById('width'),
+                heightInput: document.getElementById('height'),
+                keepAspectRatio: document.getElementById('keepAspectRatio'),
+                transparentBg: document.getElementById('transparentBg'),
+                svgPreview: document.getElementById('svgPreview'),
+                pngPreview: document.getElementById('pngPreview'),
+                downloadBtn: document.getElementById('downloadBtn'),
+                resetBtn: document.getElementById('resetBtn'),
+                previewSection: document.getElementById('previewSection'),
+                loadingIndicator: document.getElementById('loadingIndicator'),
+                errorElements: {
+                    dropzone: document.getElementById('dropzoneError'),
+                    width: document.getElementById('widthError'),
+                    height: document.getElementById('heightError')
+                }
+            };
+
+            // State variables
+            let state = {
+                currentFile: null,
+                originalAspectRatio: null,
+                currentPNGDataUrl: null,
+                isConverting: false
+            };
+
+            // Event listeners
+            function setupEventListeners() {
+                // Drag and drop events
+                elements.dropzone.addEventListener('dragover', handleDragOver);
+                elements.dropzone.addEventListener('dragleave', handleDragLeave);
+                elements.dropzone.addEventListener('drop', handleDrop);
+                elements.dropzone.addEventListener('click', () => elements.fileInput.click());
+
+                // File input
+                elements.browseBtn.addEventListener('click', () => elements.fileInput.click());
+                elements.fileInput.addEventListener('change', handleFileInputChange);
+
+                // Options changes
+                elements.keepAspectRatio.addEventListener('change', updateHeightBasedOnAspectRatio);
+                elements.widthInput.addEventListener('input', updateHeightBasedOnAspectRatio);
+                elements.widthInput.addEventListener('change', validateDimensions);
+                elements.heightInput.addEventListener('change', validateDimensions);
+                elements.transparentBg.addEventListener('change', convertToPNG);
+
+                // Buttons
+                elements.downloadBtn.addEventListener('click', handleDownload);
+                elements.resetBtn.addEventListener('click', resetConverter);
+            }
+
+            // Event handlers
+            function handleDragOver(e) {
+                e.preventDefault();
+                elements.dropzone.classList.add('drag-over');
+            }
+
+            function handleDragLeave() {
+                elements.dropzone.classList.remove('drag-over');
+            }
+
+            function handleDrop(e) {
+                e.preventDefault();
+                elements.dropzone.classList.remove('drag-over');
+
+                if (e.dataTransfer.files.length) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            }
+
+            function handleFileInputChange(e) {
+                if (e.target.files.length) {
+                    handleFile(e.target.files[0]);
+                    e.target.value = ''; // Reset input to allow selecting same file again
+                }
+            }
+
+            function handleFile(file) {
+                clearErrors();
+
+                // Validate file type
+                if (!file.type.includes('svg') && !file.name.endsWith('.svg')) {
+                    showError('dropzone', 'Please select a valid SVG file.');
+                    return;
+                }
+
+                if (file.size > 10 * 1024 * 1024) { // 10MB limit
+                    showError('dropzone', 'File size too large. Maximum 10MB allowed.');
+                    return;
+                }
+
+                state.currentFile = file;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (!isValidSVG(e.target.result)) {
+                        showError('dropzone', 'The file does not contain valid SVG content.');
+                        return;
+                    }
+
+                    elements.svgPreview.innerHTML = e.target.result;
+
+                    try {
+                        // Extract SVG dimensions
+                        const parser = new DOMParser();
+                        const svgDoc = parser.parseFromString(e.target.result, 'image/svg+xml');
+
+                        // Check for XML parsing errors
+                        const parserErrors = svgDoc.getElementsByTagName('parsererror');
+                        if (parserErrors.length > 0) {
+                            throw new Error('Invalid SVG content');
+                        }
+
+                        const svgElement = svgDoc.querySelector('svg');
+
+                        if (svgElement) {
+                            let svgWidth = svgElement.width.baseVal.value;
+                            let svgHeight = svgElement.height.baseVal.value;
+
+                            // If no explicit dimensions, try viewBox
+                            if (svgWidth === 0 || svgHeight === 0) {
+                                const viewBox = svgElement.viewBox.baseVal;
+                                if (viewBox && viewBox.width && viewBox.height) {
+                                    svgWidth = viewBox.width;
+                                    svgHeight = viewBox.height;
+                                }
+                            }
+
+                            if (svgWidth > 0 && svgHeight > 0) {
+                                state.originalAspectRatio = svgWidth / svgHeight;
+                                elements.widthInput.value = Math.round(svgWidth);
+                                elements.heightInput.value = Math.round(svgHeight);
+                            } else {
+                                // Default values if dimensions can't be determined
+                                state.originalAspectRatio = 4 / 3;
+                            }
+                        }
+
+                        elements.previewSection.classList.remove('hidden');
+                        convertToPNG();
+                    } catch (error) {
+                        showError('dropzone', 'Failed to parse SVG file. Please check the file content.');
+                        console.error('SVG parsing error:', error);
+                    }
+                };
+
+                reader.onerror = function() {
+                    showError('dropzone', 'Failed to read file. Please try again.');
+                };
+
+                reader.readAsText(file);
+            }
+
+            function isValidSVG(svgString) {
+                return svgString.includes('<svg') && svgString.includes('</svg>');
+            }
+
+            function updateHeightBasedOnAspectRatio() {
+                if (elements.keepAspectRatio.checked && state.originalAspectRatio) {
+                    const widthValue = elements.widthInput.value.trim();
+                    const width = parseInt(widthValue);
+
+                    if (!isNaN(width) && width > 0) {
+                        elements.heightInput.value = Math.round(width / state.originalAspectRatio);
+                    }
+                }
+            }
+
+            function validateDimensions() {
+                clearErrors();
+                let isValid = true;
+
+                const width = parseInt(elements.widthInput.value);
+                if (isNaN(width) || width <= 0 || width > 10000) {
+                    showError('width', 'Please enter a valid width (1-10000)');
+                    isValid = false;
+                }
+
+                const height = parseInt(elements.heightInput.value);
+                if (isNaN(height) || height <= 0 || height > 10000) {
+                    showError('height', 'Please enter a valid height (1-10000)');
+                    isValid = false;
+                }
+
+                if (isValid && state.currentFile) {
+                    convertToPNG();
+                }
+
+                return isValid;
+            }
+
+            function convertToPNG() {
+                if (!state.currentFile || !elements.svgPreview.firstChild) return;
+                if (!validateDimensions()) return;
+
+                state.isConverting = true;
+                elements.downloadBtn.disabled = true;
+                elements.loadingIndicator.classList.remove('hidden');
+
+                const width = parseInt(elements.widthInput.value);
+                const height = parseInt(elements.heightInput.value);
+                const useTransparent = elements.transparentBg.checked;
+
+                // Using setTimeout to allow UI to update before heavy computation
+                setTimeout(() => {
+                    try {
+                        // Create canvas
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+
+                        // Set background
+                        if (!useTransparent) {
+                            ctx.fillStyle = 'white';
+                            ctx.fillRect(0, 0, width, height);
+                        }
+
+                        // Create image element from SVG
+                        const img = new Image();
+                        img.onload = function() {
+                            try {
+                                ctx.drawImage(img, 0, 0, width, height);
+
+                                // Display preview
+                                elements.pngPreview.innerHTML = '';
+                                const pngImg = new Image();
+                                pngImg.onload = function() {
+                                    state.currentPNGDataUrl = canvas.toDataURL('image/png');
+                                    elements.pngPreview.appendChild(pngImg);
+                                    elements.downloadBtn.disabled = false;
+                                    state.isConverting = false;
+                                    elements.loadingIndicator.classList.add('hidden');
+                                };
+                                pngImg.src = canvas.toDataURL('image/png');
+                            } catch (error) {
+                                handleConversionError(error);
+                            }
+                        };
+
+                        img.onerror = function() {
+                            handleConversionError(new Error('Failed to load SVG image'));
+                        };
+
+                        const svgBlob = new Blob([elements.svgPreview.innerHTML], {
+                            type: 'image/svg+xml'
+                        });
+                        img.src = URL.createObjectURL(svgBlob);
+                    } catch (error) {
+                        handleConversionError(error);
+                    }
+                }, 10);
+            }
+
+            function handleConversionError(error) {
+                console.error('Conversion error:', error);
+                showError('dropzone', 'Failed to convert SVG to PNG. Please try again.');
+                elements.loadingIndicator.classList.add('hidden');
+                state.isConverting = false;
+            }
+
+            function handleDownload() {
+                if (!state.currentPNGDataUrl || state.isConverting) return;
+
+                const fileName = state.currentFile.name.replace(/.svg$/, '') + '.png';
+                const a = document.createElement('a');
+                a.href = state.currentPNGDataUrl;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+
+            function resetConverter() {
+                state.currentFile = null;
+                state.originalAspectRatio = null;
+                state.currentPNGDataUrl = null;
+
+                elements.fileInput.value = '';
+                elements.svgPreview.innerHTML = '';
+                elements.pngPreview.innerHTML = '';
+                elements.widthInput.value = '1024';
+                elements.heightInput.value = '768';
+                elements.keepAspectRatio.checked = true;
+                elements.transparentBg.checked = false;
+                elements.downloadBtn.disabled = true;
+                elements.previewSection.classList.add('hidden');
+                elements.loadingIndicator.classList.add('hidden');
+                clearErrors();
+            }
+
+            function showError(field, message) {
+                if (field === 'dropzone') {
+                    elements.dropzone.classList.add('error');
+                }
+                elements.errorElements[field].textContent = message;
+                elements.errorElements[field].classList.remove('hidden');
+            }
+
+            function clearErrors() {
+                elements.dropzone.classList.remove('error');
+                Object.values(elements.errorElements).forEach(el => {
+                    el.textContent = '';
+                    el.classList.add('hidden');
+                });
+            }
+
+            // Initialize
+            setupEventListeners();
+        });
+    </script>
+</body>
+
+</html>
