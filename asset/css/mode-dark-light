@@ -1,0 +1,18 @@
+html {
+    box-sizing: border-box;
+    color-scheme: light dark;
+}
+
+hmtl:has(#mode-switcher #light:checked) {
+    color-scheme: light;
+}
+
+hmtl:has(#mode-switcher #dark:checked) {
+    color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
